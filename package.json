@@ -1,0 +1,30 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./src/pages/index.html --port 3000 --no-cache",
+    "server": "node ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vladimir556/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "Valdimir Smelov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vladimir556/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/Vladimir556/middle.messenger.praktikum.yandex#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "handlebars": "^4.7.7"
+  },
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
+    "parcel": "^2.7.0"
+  }
+}
