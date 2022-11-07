@@ -1,0 +1,69 @@
+---
+data:
+  - name: "Андрей"
+    lastMessage: "Привет"
+  - name: "Виктор"
+    lastMessage: "Я помню чудное мгновенье:
+                  Передо мной явилась ты,
+                  Как мимолетное виденье,
+                  Как гений чистой красоты."
+    unreadCount: "5"
+  - name: "Lorem"
+    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
+    unreadCount: "99"
+  - name: "Lorem"
+    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
+    unreadCount: "99"
+  - name: "Lorem"
+    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
+    unreadCount: "99"
+  - name: "Lorem"
+    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
+    unreadCount: "99"
+  - name: "Lorem"
+    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
+    unreadCount: "99"
+  - name: "Lorem"
+    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
+    unreadCount: "99"
+  - name: "Lorem"
+    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
+    unreadCount: "99"
+  - name: "Lorem"
+    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
+    unreadCount: "99"
+  - name: "Endi"
+    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
+    unreadCount: "99"
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./../../style/styles.scss">
+  <title>Мессенджер</title>
+</head>
+<body>
+  <div id="root">
+    <main>
+      <div class="messenger">
+        <div class="messenger__left-column">
+          <div class="profile">
+            <a class="profile__link" href="./../Profile/profile.hbs">Профиль ></a>
+          </div>
+          <div class="search-field">
+            {{> input type="text" name="search" id="search" placeholder="Поиск"}}
+          </div>
+          {{> chatList chats=data}}
+        </div>
+        <div class="messenger__right-column">
+          test2
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

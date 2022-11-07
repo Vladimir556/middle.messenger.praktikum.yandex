@@ -1,0 +1,304 @@
+@import "./variables";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, label, input {
+  font-family: 'Inter';
+  color:$blackColor;
+  font-weight: 500;
+}
+h1{
+  font-size: 40px;
+}
+h2{
+  font-size: 20px;
+}
+h3{
+  font-size: 16px;
+}
+a{
+  font-size: 11px;
+  text-decoration: none;
+}
+p{
+  font-size: 12px;
+}
+input{
+  font-size: 13px;
+}
+
+main{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.form-validate{
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  min-height: 460px;
+  margin: auto;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+  border-radius: 12px;
+  padding: 30px;
+  .title{
+    text-align: center;
+    padding-bottom: 40px;
+  }
+  &__inputs{
+    .text-input{
+      display: flex;
+      flex-direction: column;
+      label{
+        font-size: 9px;
+        color: $grayColor;
+        margin-bottom: 5px;
+      }
+      input{
+        border: none;
+        border-bottom: 1px solid $blueColor;
+        outline: none;
+        margin-bottom: 32px;
+      }
+    }
+  }
+  &__buttons{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 0px;
+  }
+}
+
+.text-input{
+  input{
+    border: none;
+    outline: none;
+  }
+}
+
+.button{
+  background-color: $blueColor;
+  color: $whiteColor;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.button-link{
+  padding: 12px;
+  color:$blueColor;
+}
+
+.button-back{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 100%;
+  border-right: 1px solid $backGroundGrayColor;
+  background: $backGroundLightGrayColor;
+  &__link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    background: $blueColor;
+  }
+}
+.loading-container{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.error-container{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .status-code{
+    margin-bottom: 20px;
+  }
+  .message{
+    margin-bottom: 50px;
+  }
+}
+
+.messenger{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  &__left-column{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 310px;
+    background: $backGroundLightGrayColor;
+    border-right: 1px solid $backGroundGrayColor;
+    .profile{
+      text-align: right;
+      margin: 20px 10px;
+      &__link{
+        color: $grayColor;
+        font-size: 12px;
+      }
+    }
+    .search-field{
+      border-bottom: 1px solid $backGroundGrayColor;
+      .text-input{
+        margin: 0 10px 15px 10px;
+        input{
+          background-color: $backGroundGrayColor;
+          border: 0;
+          outline: 0;
+          height: 32px;
+          border-radius: 5px;
+          width: 100%;
+          padding: 0 5px;
+          &::placeholder{
+            color: $grayColor;
+            text-align: center;
+          }
+        }
+      }
+    }
+    .chat-list{
+      height: 100%;
+      overflow-y: auto;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+      &__item{
+        padding: 12px 10px;
+        display: flex;
+        border-bottom: 1px solid $backGroundGrayColor;
+        &:hover{
+          cursor: pointer;
+          background: $lightBlueColor;
+        }
+        .image{
+          min-width: 47px;
+          height: 47px;
+          border-radius: 50%;
+          background-color: $backGroundGrayColor;
+        }
+        .info{
+          margin: 0 0 0 10px;
+          width: 100%;
+          &__row{
+            display: flex;
+            justify-content: space-between;
+            .title{
+              font-size: 13px;
+              font-weight: 600;
+            }
+            .time{
+              font-size: 9px;
+              color: $grayColor
+            }
+          }
+          .subtitle{
+            display: flex;
+            height: 30px;
+            .last-message{
+              margin-right: 40px;
+              color: $grayColor;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;  
+              overflow: hidden;
+            }
+            .badge{
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              min-width: 20px;
+              height: 20px;
+              margin-bottom: 0;
+              margin-top: auto;
+              border-radius: 50%;
+              background-color: $blueColor;
+              font-family: 'Inter';
+              font-size: 11px;
+              color:$whiteColor;
+            }
+          }
+          
+        }
+      }
+    }
+  }
+  &__right-column{
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.profile-container{
+  width: 510px;
+  .avatar{
+    margin: 0 auto;
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    background: $backGroundGrayColor;
+    border-radius: 50%;
+  }
+  .username{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  .userinfo{
+    margin-top: 60px;
+    width: 100%;
+    .text-input{
+      display: flex;
+      padding: 10px;
+      border-bottom: 1px solid $backGroundGrayColor;
+      justify-content: space-between;
+      &:last-child{
+        border-bottom: 1px solid transparent;
+      }
+      label{
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      input{
+        width: 100%;
+        text-align: right;
+        color: $grayColor;
+      }
+    }
+  }
+  &__buttons{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    .button-link{
+      font-size: 13px;
+      padding: 10px;
+      border-bottom: 1px solid $backGroundGrayColor;
+      &:last-child{
+        border-bottom: 1px solid transparent;
+        color: $redColor;
+      }
+    }
+  }
+}
