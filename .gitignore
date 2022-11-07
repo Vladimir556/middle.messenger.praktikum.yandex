@@ -1,12 +1,6 @@
 .idea
-.DS_Store
 dist
 .github
 .parcel-cache
-*.log
-*.sql.gz
-.cache
 .vscode
 node_modules
-/build/
-/build-dev/
