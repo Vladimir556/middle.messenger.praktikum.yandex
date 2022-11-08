@@ -4,4 +4,4 @@
 - `npm run build` - сборка проекта,
 - `npm run start` - сборка и запуск локального сервера express.
 ## UI 
-https://www.figma.com/file/6jnOQDvohaTCNvNbSWfuyF/Chat_UI
+[Figma](https://www.figma.com/file/6jnOQDvohaTCNvNbSWfuyF/Chat_UI)
