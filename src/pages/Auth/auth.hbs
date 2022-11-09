@@ -11,13 +11,13 @@
   <div id="root">
     <main>
       <form class="form-validate">
-        <h2 class="title">Вход</h2>
+        <h2 class="form-validate__title">Вход</h2>
         <div class="form-validate__inputs">
           {{> input type="text" name="login" id="login" labelText="Логин"}}
           {{> input type="password" name="password" id="password" labelText="Пароль"}}
         </div>
         <div class="form-validate__buttons">
-          {{> button href="./../Error404/error404.hbs" text="Авторизоваться"}}
+          {{> button href="./../Chat/chat.hbs" text="Авторизоваться"}}
           {{> link href="./../Registration/registration.hbs" text="нет аккаунта?"}}
         </div>
       </form>
