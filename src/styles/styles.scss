@@ -92,9 +92,12 @@ main{
   border: 0;
   background-color: $blueColor;
   color: $whiteColor;
+  width: 280px;
   padding: 12px;
   border-radius: 8px;
   font-size: 13px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .button-link{
@@ -385,6 +388,9 @@ main{
         width: 100%;
         text-align: right;
         color: $grayColor;
+        &:disabled{
+          background: $whiteColor;
+        }
       }
     }
   }
