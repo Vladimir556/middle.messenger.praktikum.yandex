@@ -7,4 +7,3 @@
 [Figma](https://www.figma.com/file/6jnOQDvohaTCNvNbSWfuyF/Chat_UI)
 ## Netlify
 [![Netlify Status](https://api.netlify.com/api/v1/badges/adbdeda7-df7c-4840-9fc2-9b3358bbb980/deploy-status)](https://app.netlify.com/sites/stupendous-tiramisu-2afc9d/deploys)
-- ссылка на Netlify: [Messanger](https://6369f07edd3bba0009712e92--stupendous-tiramisu-2afc9d.netlify.app/) 
