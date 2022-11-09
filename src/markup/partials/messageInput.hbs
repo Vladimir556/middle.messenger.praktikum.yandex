@@ -1,15 +1,9 @@
 <div
 {{#if class}}
 class={{class}}
-{{else}}
-class="text-input"
 {{/if}}
 >
-  {{#if labelText}}
-  <label for={{id}}>{{ labelText }}</label>
-  {{/if}}
-  <input 
-    type={{type}}
+  <textarea 
     name={{name}}
     id={{id}}
     {{#if placeholder}}
@@ -18,5 +12,5 @@ class="text-input"
     {{#if value}}
       value={{value}}
     {{/if}}
-    >
+    ></textarea>
 </div>

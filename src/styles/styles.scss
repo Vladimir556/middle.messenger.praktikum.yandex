@@ -7,7 +7,7 @@
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6, p, span, a, label, input {
+h1, h2, h3, h4, h5, h6, p, span, a, label, input, textarea {
   font-family: 'Inter';
   color:$blackColor;
   font-weight: 500;
@@ -20,6 +20,9 @@ h2{
 }
 h3{
   font-size: 16px;
+}
+h4{
+  font-size: 13px;
 }
 a{
   font-size: 11px;
@@ -85,6 +88,7 @@ main{
 }
 
 .button{
+  border: 0;
   background-color: $blueColor;
   color: $whiteColor;
   padding: 12px;
@@ -244,6 +248,102 @@ main{
   &__right-column{
     height: 100%;
     width: 100%;
+    .chat{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      &__header{
+        display: flex;
+        align-items: center;
+        margin: 0px 20px;
+        padding: 10px 0;
+        justify-content: space-between;
+        border-bottom: 1px solid $backGroundGrayColor;
+
+        .chat-title{
+          display: flex;
+          align-items: center;
+          &__avatar{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: none;
+            background: $backGroundGrayColor;
+          }
+          &__name{
+            margin-left: 10px;
+            font-size: 13px;
+            font-weight: 600;
+          }
+          &__context-button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            background: $whiteColor;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            &:hover{
+              background: #F5F5F5;
+              cursor: pointer;
+            }
+            img{
+              height: 15px;
+            }
+          }
+        }
+      }
+
+      &__history{
+        height: 100%;
+      }
+      &__bottom-panel{
+        display: flex;
+        align-items: center;
+        border-top: 1px solid $backGroundGrayColor;
+        margin: 0px 20px;
+        padding: 10px 0;
+        .clip-button{
+          background: $whiteColor;
+          padding: 0;
+          border: none;
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+        }
+        .message-input{
+          width: 100%;
+          margin-left: 10px;
+          textarea{
+            resize: none;
+            font-size: 12px;
+            height: 35px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: $backGroundGrayColor;
+            border: 0;
+            outline: none;
+            width: 100%;
+            &::-webkit-scrollbar{
+              display: none;
+            }
+          }
+        }
+        .send-button{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: 10px;
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          rotate: 180deg;
+        }
+      }
+      
+    }
+   
   }
 }
 
