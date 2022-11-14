@@ -1,0 +1,25 @@
+<div
+{{#if class}}
+class={{class}}
+{{else}}
+class="text-input"
+{{/if}}
+>
+  {{#if labelText}}
+  <label for={{id}}>{{ labelText }}</label>
+  {{/if}}
+  <input 
+    type={{type}}
+    name={{name}}
+    id={{id}}
+    {{#if placeholder}}
+      placeholder={{placeholder}}
+    {{/if}}
+    {{#if value}}
+      value={{value}}
+    {{/if}}
+    {{#if disabled}}
+    disabled="true"
+    {{/if}}
+    >
+</div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./../styles/styles.scss">
+  <title>Загрузка</title>
+</head>
+<body>
+  <div id="root">
+    <main>
+      <div class="loading-container">
+        <h1>Загрузка</h1>
+        <h2>пожалуйста подождите</h2>
+        {{> link href="./Auth/auth.hbs" text="перейти к авторизации"}}
+        {{> link href="./Error404/error404.hbs" text="страница 404"}}
+        {{> link href="./Error5/error5.hbs" text="страница 500"}}
+      </div>
+    </main>
+  </div>
+</body>
+</html>

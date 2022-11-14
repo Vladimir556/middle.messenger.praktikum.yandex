@@ -1,0 +1,6 @@
+.idea
+dist
+.github
+.parcel-cache
+.vscode
+node_modules
