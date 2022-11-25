@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "---",
   "scripts": {
-    "dev": "parcel serve ./src/pages/index.hbs --port 3000 --no-cache",
+    "dev": "parcel ./src/index.html --port 3000 --no-cache",
     "server": "node ./server/index.js",
     "build": "parcel build ./src/pages/index.hbs",
     "start": "npm run build && npm run server"
