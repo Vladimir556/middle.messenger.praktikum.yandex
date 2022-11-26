@@ -1,0 +1,17 @@
+@import "src/styles/variables";
+
+.text-input{
+  display: flex;
+  flex-direction: column;
+  input{
+    border: none;
+    outline: none;
+    border-bottom: 1px solid $blueColor;
+    margin-bottom: 16px;
+  }
+  label{
+    font-size: 9px;
+    color: $grayColor;
+    margin-bottom: 8px;
+  }
+}

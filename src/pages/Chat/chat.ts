@@ -1,23 +1,27 @@
-import Block from "../../utils/Block";
-import template from "./chat.hbs";
-import * as styles from "./chat.scss";
-import * as data from "./../../constants/data.json"
-import {ChatList} from "../../components/ChatList/chatList";
-import {Input} from "../../components/Input/input";
+import Block from '../../utils/Block';
+import template from './chat.hbs';
+import * as styles from './chat.scss';
+import {ChatList} from '../../components/ChatList/chatList';
+import {Input} from '../../components/inputs/Input/input';
+import {MessageInput} from '../../components/inputs/MessageInput/messageInput';
+import arrowSVG from './../../static/arrow.svg'
+import clipSVG from './../../static/grayClip.svg'
+import contextMenuSVG from './../../static/contextMenu.svg'
 
 interface ChatPageProps{
-  profileName: string
+  profileName: string,
+  profileImgUrl: string
 }
 
 export class ChatPage extends Block{
   constructor(props: ChatPageProps) {
-    super('div', props);
+    super('main', props);
   }
 
   protected init() {
-    this.setProps({styles})
+    this.setProps({styles, arrowSVG, clipSVG, contextMenuSVG})
 
-    console.log(data)
+
     this.children.input = new Input({
       type: 'text',
       name: 'search',
@@ -25,16 +29,41 @@ export class ChatPage extends Block{
       placeholder: 'Поиск'
     })
 
-    this.children.chatList = new ChatList({
-      chats: [
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Привет',
-          unreadCount: '10'
-        }
-      ]
-    })
+    this.children.chatList = new ChatList(
+      {
+        chats: [
+          {
+            name: 'Tom',
+            time: '10:30',
+            lastMessage: 'Привет',
+            unreadCount: '10'
+          },
+          {
+            name: 'Tom',
+            time: '10:30',
+            lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
+            unreadCount: '10'
+          },
+          {
+            name: 'Tom',
+            time: '10:30',
+            lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
+            unreadCount: '10'
+          },
+
+        ]
+      },
+      'chat-list'
+    )
+    
+    this.children.messageInput = new MessageInput(
+      {
+        name: 'message',
+        id: 'message',
+        placeholder: 'Сообщение'
+      },
+      'message-input'
+    )
   }
 
   protected render(): DocumentFragment {

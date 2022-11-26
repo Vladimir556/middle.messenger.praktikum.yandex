@@ -1,0 +1,69 @@
+@import "src/styles/variables";
+
+.profile-container{
+  width: 510px;
+  &__avatar{
+    margin: 60px auto 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    background: $backGroundGrayColor;
+    border-radius: 50%;
+  }
+  &__username{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  &__userinfo{
+    margin-top: 60px;
+    width: 100%;
+    .text-input{
+      display: flex;
+      flex-direction: row;
+      padding: 10px;
+      border-bottom: 1px solid $backGroundGrayColor;
+      justify-content: space-between;
+      &:last-child{
+        border-bottom: 1px solid transparent;
+      }
+      label{
+        font-size: 13px;
+        white-space: nowrap;
+        color: $blackColor;
+        margin: 0;
+      }
+      input{
+        width: 100%;
+        text-align: right;
+        color: $grayColor;
+        border-bottom: none;
+        margin: 0;
+        &:disabled{
+          background: $whiteColor;
+        }
+      }
+    }
+  }
+  &__buttons{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    .button-link{
+      justify-content: start;
+      border-bottom: 1px solid $backGroundGrayColor;
+      a{
+        font-size: 13px;
+        padding: 10px;
+      }
+      &:last-child{
+        border-bottom: 1px solid transparent;
+        a{
+          color: $redColor;
+        }
+      }
+    }
+  }
+}

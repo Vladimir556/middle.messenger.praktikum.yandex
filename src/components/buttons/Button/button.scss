@@ -1,0 +1,15 @@
+@import "src/styles/variables";
+
+.button{
+  border: 0;
+  background-color: $blueColor;
+  color: $whiteColor;
+  width: 280px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  text-align: center;
+  &:hover{
+    cursor: pointer;
+  }
+}

@@ -1,5 +1,131 @@
-@import "src/styles/variables";
+@import "./variables";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
 
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, label, input, textarea {
+  font-family: 'Inter';
+  color:$blackColor;
+  font-weight: 500;
+}
+h1{
+  font-size: 40px;
+}
+h2{
+  font-size: 20px;
+}
+h3{
+  font-size: 16px;
+}
+h4{
+  font-size: 13px;
+  font-weight: 600;
+}
+a{
+  font-size: 11px;
+  text-decoration: none;
+}
+p{
+  font-size: 12px;
+}
+input{
+  font-size: 13px;
+}
+
+main{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.form-validate{
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  min-height: 460px;
+  margin: auto;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+  border-radius: 12px;
+  padding: 30px;
+  &__title{
+    text-align: center;
+    padding-bottom: 40px;
+  }
+  &__inputs{
+    .text-input{
+      display: flex;
+      flex-direction: column;
+      label{
+        font-size: 9px;
+        color: $grayColor;
+        margin-bottom: 5px;
+      }
+      input{
+        border: none;
+        border-bottom: 1px solid $blueColor;
+        outline: none;
+        margin-bottom: 32px;
+      }
+    }
+  }
+  &__buttons{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 0px;
+  }
+}
+
+.text-input{
+  input{
+    border: none;
+    outline: none;
+  }
+}
+
+.button{
+  border: 0;
+  background-color: $blueColor;
+  color: $whiteColor;
+  width: 280px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.button-link{
+  padding: 12px;
+  color:$blueColor;
+}
+
+.back-button{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 100%;
+  border-right: 1px solid $backGroundGrayColor;
+  background: $backGroundLightGrayColor;
+  &__link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    background: $blueColor;
+  }
+}
 .messenger{
   display: flex;
   height: 100%;
@@ -26,11 +152,11 @@
         input{
           background-color: $backGroundGrayColor;
           border: 0;
+          outline: 0;
           height: 32px;
           border-radius: 5px;
+          width: 100%;
           padding: 0 5px;
-          margin: 0;
-          font-size: 12px;
           &::placeholder{
             color: $grayColor;
             text-align: center;
@@ -168,9 +294,6 @@
           border-radius: 50%;
           width: 32px;
           height: 32px;
-          &:hover{
-            cursor: pointer;
-          }
         }
         .message-input{
           width: 100%;
@@ -197,8 +320,6 @@
           margin-left: 10px;
           width: 28px;
           height: 28px;
-          background: $blueColor;
-          border: none;
           border-radius: 50%;
           rotate: 180deg;
         }
@@ -206,5 +327,84 @@
 
     }
 
+  }
+}
+.loading-container{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.error-container{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .status-code{
+    margin-bottom: 20px;
+  }
+  .message{
+    margin-bottom: 50px;
+  }
+}
+
+
+
+.profile-container{
+  width: 510px;
+  &__avatar{
+    margin: 0 auto;
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    background: $backGroundGrayColor;
+    border-radius: 50%;
+  }
+  &__username{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+  }
+  &__userinfo{
+    margin-top: 60px;
+    width: 100%;
+    .text-input{
+      display: flex;
+      padding: 10px;
+      border-bottom: 1px solid $backGroundGrayColor;
+      justify-content: space-between;
+      &:last-child{
+        border-bottom: 1px solid transparent;
+      }
+      label{
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      input{
+        width: 100%;
+        text-align: right;
+        color: $grayColor;
+        &:disabled{
+          background: $whiteColor;
+        }
+      }
+    }
+  }
+  &__buttons{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    .button-link{
+      font-size: 13px;
+      padding: 10px;
+      border-bottom: 1px solid $backGroundGrayColor;
+      &:last-child{
+        border-bottom: 1px solid transparent;
+        color: $redColor;
+      }
+    }
   }
 }

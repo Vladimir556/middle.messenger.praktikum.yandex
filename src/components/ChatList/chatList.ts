@@ -6,7 +6,7 @@ interface ChatListProp{
   name: string
   time: string,
   lastMessage: string,
-  unreadCount: string
+  unreadCount?: string
 }
 
 interface ChatListProps{
@@ -14,8 +14,8 @@ interface ChatListProps{
 }
 
 export class ChatList extends Block {
-  constructor(props: ChatListProps) {
-    super('ul', props);
+  constructor(props: ChatListProps, className?: string) {
+    super('ul', props, className);
   }
 
   protected init() {

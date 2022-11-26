@@ -1,0 +1,10 @@
+@import "src/styles/variables";
+
+.button-link{
+  display: flex;
+  justify-content: center;
+  a{
+    color: $blueColor;
+    padding: 12px;
+  }
+}

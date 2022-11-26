@@ -23,7 +23,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   protected props: Props<P>;
   private eventBus: () => EventBus<BlockEvents<Props<P>>>
   private _element: HTMLElement | null = null;
-  private _meta: {tagName: string; props: any };
+  private _meta: {tagName: string, className: string | undefined, props: any };
 
   /** JSDoc
    * @param {string} tagName
@@ -31,7 +31,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
    *
    * @returns {void}
    */
-  protected constructor(tagName = "div", propsWithChildren: Props<P> = {} as Props<P>) {
+  protected constructor(tagName: string = "div", propsWithChildren: Props<P> = {} as Props<P>, className?: string) {
     const eventBus = new EventBus<BlockEvents<Props<P>>>();
     this.eventBus = () => eventBus;
 
@@ -39,6 +39,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
 
     this._meta = {
       tagName,
+      className,
       props
     };
 
@@ -52,6 +53,8 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   get element() {
     return this._element;
   }
+
+
 
   private _addEvents() {
     const {events = {}} = this.props;
@@ -71,6 +74,9 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   private _createResources() {
     const { tagName } = this._meta;
     this._element = this._createDocumentElement(tagName);
+    if (this._meta.className){
+      this._element.className = this._meta.className
+    }
   }
 
   protected init() {}
