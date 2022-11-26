@@ -1,0 +1,21 @@
+<ul class="chat-list">
+  {{#each chats }}
+    <li class="chat-list__item">
+      <div class="image">
+        <img>
+      </div>
+      <div class="info">
+        <div class="info__row">
+          <p class="title">{{ this.name}}</p>
+          <p class="time">10:30</p>
+        </div>
+        <div class="subtitle">
+          <p class="last-message">{{this.lastMessage}}</p>
+          {{#if this.unreadCount}}
+            <div class="badge">{{this.unreadCount}}</div>
+          {{/if}}
+        </div>
+      </div>
+    </li>
+  {{/each }}
+</ul>

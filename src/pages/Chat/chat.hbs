@@ -1,60 +1,24 @@
----
-data:
-  - name: "Андрей"
-    lastMessage: "Привет"
-  - name: "Виктор"
-    lastMessage: "Я помню чудное мгновенье:
-                  Передо мной явилась ты,
-                  Как мимолетное виденье,
-                  Как гений чистой красоты."
-    unreadCount: "5"
-  - name: "Lorem"
-    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
-    unreadCount: "99"
-  - name: "Lorem"
-    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
-    unreadCount: "99"
-  - name: "Lorem"
-    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
-    unreadCount: "99"
-  - name: "Lorem"
-    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
-    unreadCount: "99"
-  - name: "Lorem"
-    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
-    unreadCount: "99"
-  - name: "Lorem"
-    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
-    unreadCount: "99"
-  - name: "Lorem"
-    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
-    unreadCount: "99"
-  - name: "Lorem"
-    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
-    unreadCount: "99"
-  - name: "Endi"
-    lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat."
-    unreadCount: "99"
----
 
 
 <main>
   <div class="messenger">
     <div class="messenger__left-column">
       <div class="profile">
-<!--        <a class="profile__link" href="./../Profile/profile.hbs">Профиль ></a>-->
+        <a class="profile__link" href="./../Profile/profile.hbs">Профиль ></a>
       </div>
       <div class="search-field">
-        {{> input type="text" name="search" id="search" placeholder="Поиск"}}
+<!--        input type="text" name="search" id="search" placeholder="Поиск"-->
+        {{input}}
       </div>
-      {{> chatList chats=data}}
+<!--      chatList chats=data-->
+      {{chatList}}
     </div>
     <div class="messenger__right-column">
       <div class="chat">
         <div class="chat__header">
           <div class="chat-title">
-            <img class="chat-title__avatar">
-            <h4 class="chat-title__name">Вадим</h4>
+            <img src="{{profileImg}}" class="chat-title__avatar">
+            <h4 class="chat-title__name">{{profileName}}</h4>
           </div>
             <button class="chat-title__context-button"><img src="./../../static/contextMenu.svg" alt="context-menu-button"></button>
         </div>
@@ -63,7 +27,8 @@ data:
         </div>
         <div class="chat__bottom-panel">
           <button class="button clip-button"><img src="./../../static/grayClip.svg" alt="clip"></button>
-          {{> messageInput class="message-input" name="message" id="message" placeholder="Сообщение"}}
+<!--          messageInput class="message-input" name="message" id="message" placeholder="Сообщение"-->
+          {{messageInput}}
           <button class="button send-button"><img src="./../../static/arrow.svg" alt="clip"></button>
 
         </div>

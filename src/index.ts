@@ -3,7 +3,7 @@ import {renderDom} from "./utils/renderDom";
 
 
 window.addEventListener('DOMContentLoaded', () => {
-  const chatPage = new ChatPage({});
+  const chatPage = new ChatPage({profileName: 'Вадим'});
   renderDom('#app', chatPage)
 });
 

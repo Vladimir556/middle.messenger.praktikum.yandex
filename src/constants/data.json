@@ -1,0 +1,58 @@
+{
+  "data": [
+    {
+      "name": "Андрей",
+      "lastMessage": "Привет"
+    },
+    {
+      "name": "Виктор",
+      "lastMessage": "Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.",
+      "unreadCount": "5"
+    },
+    {
+      "name": "Lorem",
+      "lastMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat.",
+      "unreadCount": "99"
+    },
+    {
+      "name": "Lorem",
+      "lastMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat.",
+      "unreadCount": "99"
+    },
+    {
+      "name": "Lorem",
+      "lastMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat.",
+      "unreadCount": "99"
+    },
+    {
+      "name": "Lorem",
+      "lastMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat.",
+      "unreadCount": "99"
+    },
+    {
+      "name": "Lorem",
+      "lastMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat.",
+      "unreadCount": "99"
+    },
+    {
+      "name": "Lorem",
+      "lastMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat.",
+      "unreadCount": "99"
+    },
+    {
+      "name": "Lorem",
+      "lastMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat.",
+      "unreadCount": "99"
+    },
+    {
+      "name": "Lorem",
+      "lastMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat.",
+      "unreadCount": "99"
+    },
+    {
+      "name": "Endi",
+      "lastMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id consequat sem. Sed nunc augue, varius in faucibus nec, auctor at nunc. Nulla at magna scelerisque, tempor lectus id, aliquet erat.",
+      "unreadCount": "99"
+    }
+  ]
+}
