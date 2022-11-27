@@ -3,8 +3,6 @@ import template from "./input.hbs";
 import * as styles from "./input.scss";
 
 interface InputProps{
-  className?: string,
-  labelText?: string,
   type: string,
   name: string,
   id: string,
@@ -12,15 +10,14 @@ interface InputProps{
   placeholder?: string,
   value?: string
   events?: {
-    input?: (event: Event) => void;
-    blur?: (event: Event) => void;
-    focus?: (event: Event) => void;
+    blur?: (event: FocusEvent & {target: HTMLInputElement}) => void;
+    focus?: (event: FocusEvent & {target: HTMLInputElement}) => void;
   }
 }
 
 export class Input extends Block{
-  constructor(props: InputProps, className: string = 'text-input') {
-    super('div', props, className);
+  constructor(props: InputProps) {
+    super(props);
   }
 
   protected init() {

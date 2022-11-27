@@ -8,8 +8,8 @@ interface LinkProps{
 }
 
 export class Link extends Block{
-  constructor(props: LinkProps, className: string = 'button-link') {
-    super('div', props, className);
+  constructor(props: LinkProps) {
+    super(props);
   }
 
   protected init() {

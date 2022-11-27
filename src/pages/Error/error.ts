@@ -10,7 +10,7 @@ interface ErrorPageProps{
 
 export class ErrorPage extends Block{
   constructor(props: ErrorPageProps) {
-    super('main', props);
+    super(props);
   }
 
   protected init() {

@@ -23,7 +23,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   protected props: Props<P>;
   private eventBus: () => EventBus<BlockEvents<Props<P>>>
   private _element: HTMLElement | null = null;
-  private _meta: {tagName: string, className: string | undefined, props: any };
+  private _meta: {props: Props<P>};
 
   /** JSDoc
    * @param {string} tagName
@@ -31,15 +31,13 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
    *
    * @returns {void}
    */
-  protected constructor(tagName: string = "div", propsWithChildren: Props<P> = {} as Props<P>, className?: string) {
+  protected constructor(propsWithChildren: Props<P> = {} as Props<P>) {
     const eventBus = new EventBus<BlockEvents<Props<P>>>();
     this.eventBus = () => eventBus;
 
     const {props, children} = this._getChildrenAndProps(propsWithChildren);
 
     this._meta = {
-      tagName,
-      className,
       props
     };
 
@@ -150,7 +148,6 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     // все пропсы компонента
     const contextAndStubs = {...context};
 
-    console.log(this.children)
     Object.entries(this.children).forEach(([name, component]) => {
       contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
     });

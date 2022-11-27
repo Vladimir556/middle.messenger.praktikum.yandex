@@ -1,20 +1,14 @@
-<div class="text-input">
-  {{#if labelText}}
-    <label for={{id}}>{{ labelText }}</label>
+<input
+  type={{type}}
+  name={{name}}
+  id={{id}}
+  {{#if placeholder}}
+  placeholder={{placeholder}}
   {{/if}}
-  <input
-    type={{type}}
-    name={{name}}
-    id={{id}}
-    {{#if placeholder}}
-    placeholder={{placeholder}}
-    {{/if}}
-    {{#if value}}
-    value={{value}}
-    {{/if}}
-    {{#if disabled}}
-    disabled="true"
-    {{/if}}
-  >
-  <span class="text-input__validation" id="validate_{{id}}">{{errorMessage}}</span>
-</div>
+  {{#if value}}
+  value={{value}}
+  {{/if}}
+  {{#if disabled}}
+  disabled="true"
+  {{/if}}
+>

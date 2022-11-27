@@ -1,9 +1,9 @@
 import Block from "../../../utils/Block";
 import template from "./registrationForm.hbs";
 import * as styles from "./../form.scss"
-import {Input} from "../../inputs/Input/input";
 import {Button} from "../../buttons/Button/button";
 import {Link} from "../../buttons/Link/link";
+import { LabeledInput } from "../../inputs/Input/LabeledInput/labeledInput";
 
 interface RegistrationFormProps{
   events:{
@@ -12,14 +12,14 @@ interface RegistrationFormProps{
 }
 
 export class RegistrationForm extends Block{
-  constructor(props: RegistrationFormProps, className: string = 'form-validate') {
-    super('form', props, className);
+  constructor(props: RegistrationFormProps) {
+    super(props);
   }
 
   protected init() {
     this.setProps({styles})
 
-    this.children.emailInput = new Input({
+    this.children.emailInput = new LabeledInput({
       type: 'email',
       name: 'email',
       id: 'email',
@@ -27,42 +27,42 @@ export class RegistrationForm extends Block{
 
     })
 
-    this.children.loginInput = new Input({
+    this.children.loginInput = new LabeledInput({
       type: 'text',
       name: 'login',
       id: 'login',
       labelText: 'Логин',
     })
 
-    this.children.firstNameInput = new Input({
+    this.children.firstNameInput = new LabeledInput({
       type: 'text',
       name: 'first_name',
       id: 'first_name',
       labelText: 'Имя',
     })
 
-    this.children.secondNameInput = new Input({
+    this.children.secondNameInput = new LabeledInput({
       type: 'text',
       name: 'second_name',
       id: 'second_name',
       labelText: 'Фамилия',
     })
 
-    this.children.phoneInput = new Input({
+    this.children.phoneInput = new LabeledInput({
       type: 'text',
       name: 'phone',
       id: 'phone',
       labelText: 'Телефон',
     })
 
-    this.children.passwordInput = new Input({
+    this.children.passwordInput = new LabeledInput({
       type: 'password',
       name: 'password',
       id: 'password',
       labelText: 'Пароль',
     })
 
-    this.children.repeatPasswordInput = new Input({
+    this.children.repeatPasswordInput = new LabeledInput({
       type: 'password',
       name: 'repeatPassword',
       id: 'repeatPassword',

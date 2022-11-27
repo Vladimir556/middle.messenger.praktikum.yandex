@@ -1,9 +1,9 @@
 import Block from "../../../utils/Block";
 import template from "./loginForm.hbs";
 import * as styles from "./../form.scss"
-import {Input} from "../../inputs/Input/input";
 import {Button} from "../../buttons/Button/button";
 import {Link} from "../../buttons/Link/link";
+import {LabeledInput} from "../../inputs/Input/LabeledInput/labeledInput";
 
 interface LoginFormProps{
   events:{
@@ -12,21 +12,21 @@ interface LoginFormProps{
 }
 
 export class LoginForm extends Block{
-  constructor(props: LoginFormProps, className: string = 'form-validate') {
-    super('form', props, className);
+  constructor(props: LoginFormProps) {
+    super(props);
   }
 
   protected init() {
     this.setProps({styles})
 
-    this.children.loginInput = new Input({
+    this.children.loginInput = new LabeledInput({
       type: 'text',
       name: 'login',
       id: 'login',
-      labelText: 'Логин',
+      labelText: 'Логин'
     })
 
-    this.children.passwordInput = new Input({
+    this.children.passwordInput = new LabeledInput({
       type: 'password',
       name: 'password',
       id: 'password',

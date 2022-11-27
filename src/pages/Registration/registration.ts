@@ -6,7 +6,7 @@ import {getFormData} from "../../utils/getFormData";
 
 export class RegistrationPage extends Block{
   constructor() {
-    super('main', {});
+    super({});
   }
 
   protected init() {

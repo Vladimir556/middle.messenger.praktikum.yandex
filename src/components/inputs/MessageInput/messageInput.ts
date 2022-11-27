@@ -12,8 +12,8 @@ interface MessageInputProps{
 }
 
 export class MessageInput extends Block{
-  constructor(props: MessageInputProps, className: string = 'message-input') {
-    super('div', props, className);
+  constructor(props: MessageInputProps) {
+    super(props);
   }
 
   protected render(): DocumentFragment {

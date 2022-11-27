@@ -11,6 +11,12 @@
     margin-bottom: 16px;
     color: $errorColor;
   }
+  &__tip{
+    display: none;
+    color: $blueColor;
+    margin-bottom: 16px;
+    font-size: 9px;
+  }
   input{
     margin-top: 8px;
     border: none;

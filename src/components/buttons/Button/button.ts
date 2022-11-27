@@ -7,8 +7,8 @@ interface ButtonProps{
 }
 
 export class Button extends Block{
-  constructor(props: ButtonProps, className: string = 'button') {
-    super('button', props, className);
+  constructor(props: ButtonProps) {
+    super(props);
   }
 
   protected init() {

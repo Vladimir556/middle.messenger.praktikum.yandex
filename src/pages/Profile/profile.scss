@@ -26,14 +26,12 @@
       padding: 10px;
       border-bottom: 1px solid $backGroundGrayColor;
       justify-content: space-between;
+      font-size: 13px;
+      white-space: nowrap;
+      color: $blackColor;
+      margin: 0;
       &:last-child{
         border-bottom: 1px solid transparent;
-      }
-      label{
-        font-size: 13px;
-        white-space: nowrap;
-        color: $blackColor;
-        margin: 0;
       }
       input{
         width: 100%;
@@ -54,15 +52,11 @@
     .button-link{
       justify-content: start;
       border-bottom: 1px solid $backGroundGrayColor;
-      a{
-        font-size: 13px;
-        padding: 10px;
-      }
+      font-size: 13px;
+      padding: 10px;
       &:last-child{
         border-bottom: 1px solid transparent;
-        a{
-          color: $redColor;
-        }
+        color: $redColor;
       }
     }
   }

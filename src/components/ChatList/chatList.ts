@@ -14,8 +14,8 @@ interface ChatListProps{
 }
 
 export class ChatList extends Block {
-  constructor(props: ChatListProps, className?: string) {
-    super('ul', props, className);
+  constructor(props: ChatListProps) {
+    super(props);
   }
 
   protected init() {

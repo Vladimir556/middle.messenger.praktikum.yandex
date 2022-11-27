@@ -9,7 +9,7 @@ interface BackButtonProps{
 
 export class BackButton extends Block{
   constructor(props: BackButtonProps) {
-    super('div', props, 'back-button');
+    super(props);
   }
 
   protected init() {
