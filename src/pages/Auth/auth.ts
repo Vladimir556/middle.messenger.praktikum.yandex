@@ -3,13 +3,10 @@ import template from "./auth.hbs"
 import {LoginForm} from "../../components/Form/loginForm/loginForm";
 import {getFormData} from "../../utils/getFormData";
 
-interface AuthPageProps{
-
-}
 
 export class AuthPage extends Block{
-  constructor(props: AuthPageProps) {
-    super('main', props);
+  constructor() {
+    super('main', {});
   }
 
   protected init() {

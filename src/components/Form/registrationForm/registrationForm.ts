@@ -74,7 +74,7 @@ export class RegistrationForm extends Block{
 
     this.children.loginLink = new Link({
       text: 'Войти',
-      href: '/login'
+      href: '/Auth'
     })
   }
 

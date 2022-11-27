@@ -24,7 +24,7 @@ export class ProfilePage extends Block{
     this.setProps({styles, avatarSVG})
 
     this.children.backButton = new BackButton({
-
+      href: '/'
     })
 
     this.children.emailInput = new Input({
@@ -93,7 +93,7 @@ export class ProfilePage extends Block{
 
     this.children.logOutLink = new Link({
       text: 'Выйти',
-      href: ''
+      href: '/Auth/'
     })
 
 

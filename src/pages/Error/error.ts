@@ -1,6 +1,5 @@
 import Block from "../../utils/Block";
 import template from "./error.hbs";
-import * as styles from "./error.scss"
 
 interface ErrorPageProps{
   statusCode: number,
@@ -13,7 +12,7 @@ export class ErrorPage extends Block{
   }
 
   protected init() {
-    this.setProps({styles})
+
   }
 
   protected render(): DocumentFragment {

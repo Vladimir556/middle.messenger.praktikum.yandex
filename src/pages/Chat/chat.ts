@@ -7,6 +7,7 @@ import {MessageInput} from '../../components/inputs/MessageInput/messageInput';
 import arrowSVG from './../../static/arrow.svg'
 import clipSVG from './../../static/grayClip.svg'
 import contextMenuSVG from './../../static/contextMenu.svg'
+import {autoSizeTextArea} from "../../utils/autoSizeTextArea";
 
 interface ChatPageProps{
   profileName: string,
@@ -56,14 +57,14 @@ export class ChatPage extends Block{
       'chat-list'
     )
     
-    this.children.messageInput = new MessageInput(
-      {
-        name: 'message',
-        id: 'message',
-        placeholder: 'Сообщение'
-      },
-      'message-input'
-    )
+    this.children.messageInput = new MessageInput({
+      name: 'message',
+      id: 'message',
+      placeholder: 'Сообщение',
+      events: {
+        input: (event) => autoSizeTextArea(event!)
+      }
+    })
   }
 
   protected render(): DocumentFragment {

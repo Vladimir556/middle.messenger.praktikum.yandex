@@ -1,11 +1,11 @@
 {
   "name": "middle.messenger.praktikum.yandex",
   "version": "1.0.0",
-  "description": "---",
+  "description": "messenger app",
   "scripts": {
-    "dev": "parcel src/index.html src/pages/Profile/index.html src/pages/Auth/index.html  --port 3000 --no-cache",
+    "dev": "parcel src/pages/index.html src/pages/Auth/index.html src/pages/Error/Error5/index.html src/pages/Error/Error404/index.html src/pages/Profile/index.html src/pages/Registration/index.html --port 3000 --no-cache",
     "server": "node ./server/index.js",
-    "build": "parcel build ./src/pages/index.hbs",
+    "build": "parcel build src/pages/index.html src/pages/Auth/index.html src/pages/Error/Error5/index.html src/pages/Error/Error404/index.html src/pages/Profile/index.html src/pages/Registration/index.html",
     "start": "npm run build && npm run server"
   },
   "repository": {
@@ -14,19 +14,12 @@
   },
   "keywords": [],
   "author": "Valdimir Smelov",
-  "engines": {
-    "node": "16.18.1",
-    "npm": "8.19.2"
-  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Vladimir556/middle.messenger.praktikum.yandex/issues"
   },
   "homepage": "https://github.com/Vladimir556/middle.messenger.praktikum.yandex#readme",
   "dependencies": {
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
     "express": "^4.18.2",
     "handlebars": "^4.7.7",
     "nanoid": "^4.0.0"
@@ -38,10 +31,25 @@
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "eslint": "^8.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "parcel": "^2.7.0",
     "sass": "^1.56.1",
     "stylelint": "^14.15.0",
     "stylelint-scss": "^4.3.0",
     "typescript": "^4.8.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

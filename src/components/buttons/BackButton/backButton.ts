@@ -4,7 +4,7 @@ import * as styles from "./backButton.scss"
 import arrowSVG from "./../../../static/arrow.svg"
 
 interface BackButtonProps{
-
+  href: string
 }
 
 export class BackButton extends Block{

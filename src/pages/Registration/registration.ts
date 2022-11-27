@@ -3,13 +3,10 @@ import template from "./registration.hbs";
 import {RegistrationForm} from "../../components/Form/registrationForm/registrationForm";
 import {getFormData} from "../../utils/getFormData";
 
-interface RegistrationPageProps{
-
-}
 
 export class RegistrationPage extends Block{
-  constructor(props: RegistrationPageProps) {
-    super('main', props);
+  constructor() {
+    super('main', {});
   }
 
   protected init() {

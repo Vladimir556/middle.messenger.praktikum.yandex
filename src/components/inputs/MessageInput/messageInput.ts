@@ -6,10 +6,13 @@ interface MessageInputProps{
   id: string,
   placeholder?: string,
   value?: string
+  events?: {
+    input: (event?: InputEvent & {target: HTMLTextAreaElement}) => void
+  }
 }
 
 export class MessageInput extends Block{
-  constructor(props: MessageInputProps, className?: string) {
+  constructor(props: MessageInputProps, className: string = 'message-input') {
     super('div', props, className);
   }
 
