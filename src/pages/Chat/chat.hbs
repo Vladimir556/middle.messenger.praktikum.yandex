@@ -1,30 +1,32 @@
-<div class="messenger">
-  <div class="messenger__left-column">
-    <div class="profile">
-      <a class="profile__link" href="/Profile/">Профиль ></a>
+<main>
+  <div class="messenger">
+    <div class="messenger__left-column">
+      <div class="profile">
+        <a class="profile__link" href="/Profile/">Профиль ></a>
+      </div>
+      <div class="search-field">
+        {{{input}}}
+      </div>
+      {{{chatList}}}
     </div>
-    <div class="search-field">
-      {{{input}}}
-    </div>
-    {{{chatList}}}
-  </div>
-  <div class="messenger__right-column">
-    <div class="chat">
-      <div class="chat__header">
-        <div class="chat-title">
-          <img src="{{profileImgUrl}}" class="chat-title__avatar" height="35" width="35">
-          <h4 class="chat-title__name">{{profileName}}</h4>
-        </div>
+    <div class="messenger__right-column">
+      <div class="chat">
+        <div class="chat__header">
+          <div class="chat-title">
+            <img src="{{profileImgUrl}}" class="chat-title__avatar" height="35" width="35">
+            <h4 class="chat-title__name">{{profileName}}</h4>
+          </div>
           <button class="chat-title__context-button"><img src="{{contextMenuSVG}}" alt="context-menu-button"></button>
-      </div>
-      <div class="chat__history">
-        {{{inputtest}}}
-      </div>
-      <div class="chat__bottom-panel">
-        <button class="button clip-button"><img src="{{clipSVG}}" alt="clip"></button>
-        {{{messageInput}}}
-        <button class="button send-button"><img src="{{arrowSVG}}" alt="clip"></button>
+        </div>
+        <div class="chat__history">
+          {{{inputtest}}}
+        </div>
+        <div class="chat__bottom-panel">
+          <button class="button clip-button"><img src="{{clipSVG}}" alt="clip"></button>
+          {{{messageInput}}}
+          <button class="button send-button"><img src="{{arrowSVG}}" alt="clip"></button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</main>

@@ -1,21 +1,23 @@
-{{#each chats }}
-  <li class="chat-list__item">
-    <div class="image">
-      {{#if this.imgUrl}}
-        <img class="image" src="{{this.imgUrl}}" width="47" height="47">
-      {{/if}}
-    </div>
-    <div class="info">
-      <div class="info__row">
-        <p class="title">{{ this.name}}</p>
-        <p class="time">{{this.time}}</p>
-      </div>
-      <div class="subtitle">
-        <p class="last-message">{{this.lastMessage}}</p>
-        {{#if this.unreadCount}}
-          <div class="badge">{{this.unreadCount}}</div>
+<ul class="chat-list">
+  {{#each chats }}
+    <li class="chat-list__item">
+      <div class="image">
+        {{#if this.imgUrl}}
+          <img class="image" src="{{this.imgUrl}}" width="47" height="47">
         {{/if}}
       </div>
-    </div>
-  </li>
-{{/each }}
+      <div class="info">
+        <div class="info__row">
+          <p class="title">{{ this.name}}</p>
+          <p class="time">{{this.time}}</p>
+        </div>
+        <div class="subtitle">
+          <p class="last-message">{{this.lastMessage}}</p>
+          {{#if this.unreadCount}}
+            <div class="badge">{{this.unreadCount}}</div>
+          {{/if}}
+        </div>
+      </div>
+    </li>
+  {{/each }}
+</ul>

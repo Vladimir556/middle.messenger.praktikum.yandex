@@ -54,7 +54,13 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     return this._element;
   }
 
+  private _removeEvents() {
+    const events: Record<string, () => void> = (this.props as Props).events;
 
+    if (!events || !this._element) {
+      return;
+    }
+  }
 
   private _addEvents() {
     const {events = {}} = this.props;
@@ -71,19 +77,17 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  private _createResources() {
-    const { tagName } = this._meta;
-    this._element = this._createDocumentElement(tagName);
-    if (this._meta.className){
-      this._element.className = this._meta.className
-    }
-  }
+  // private _createResources() {
+  //   const { tagName } = this._meta;
+  //   this._element = this._createDocumentElement(tagName);
+  //   if (this._meta.className){
+  //     this._element.className = this._meta.className
+  //   }
+  // }
 
   protected init() {}
 
   private _init(){
-    this._createResources();
-
     this.init();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -126,12 +130,16 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   private _render() {
     const block = this.render();
 
-    this._element!.innerHTML = '';
+    const newBlock = block.firstElementChild as HTMLElement
 
-    this._element!.append(block);
+    if (this._element){
+      this._removeEvents()
+      this._element.replaceWith(newBlock)
+    }
+
+    this._element = newBlock
 
     this._addEvents();
-
   }
 
   protected render(): DocumentFragment {
@@ -142,6 +150,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     // все пропсы компонента
     const contextAndStubs = {...context};
 
+    console.log(this.children)
     Object.entries(this.children).forEach(([name, component]) => {
       contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
     });

@@ -3,8 +3,6 @@
 .button-link{
   display: flex;
   justify-content: center;
-  a{
-    color: $blueColor;
-    padding: 12px;
-  }
+  color: $blueColor;
+  padding: 12px;
 }
