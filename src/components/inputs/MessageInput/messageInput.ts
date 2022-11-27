@@ -16,10 +16,6 @@ export class MessageInput extends Block{
     super('div', props, className);
   }
 
-  protected init() {
-    super.init();
-  }
-
   protected render(): DocumentFragment {
     return this.compile(template, this.props)
   }

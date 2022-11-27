@@ -11,6 +11,11 @@ interface InputProps{
   disabled?: boolean,
   placeholder?: string,
   value?: string
+  events?: {
+    input?: (event: Event) => void;
+    blur?: (event: Event) => void;
+    focus?: (event: Event) => void;
+  }
 }
 
 export class Input extends Block{

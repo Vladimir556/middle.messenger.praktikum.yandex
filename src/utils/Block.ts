@@ -139,6 +139,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   }
 
   protected compile(template: (context: any) => string, context: any) {
+    // все пропсы компонента
     const contextAndStubs = {...context};
 
     Object.entries(this.children).forEach(([name, component]) => {

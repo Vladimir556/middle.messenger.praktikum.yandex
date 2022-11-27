@@ -4,7 +4,7 @@ import {ErrorPage} from "../error";
 window.addEventListener('DOMContentLoaded', () => {
   const error404 = new ErrorPage({
     statusCode: 404,
-    errorMessage: 'Мы уже фиксим'
+    errorMessage: 'Не туда попали'
   })
   renderDom('#app', error404)
 })

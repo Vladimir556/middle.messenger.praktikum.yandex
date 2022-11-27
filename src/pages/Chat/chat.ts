@@ -51,6 +51,54 @@ export class ChatPage extends Block{
             lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
             unreadCount: '10'
           },
+          {
+            name: 'Tom',
+            time: '10:30',
+            lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
+            unreadCount: '10'
+          },
+          {
+            name: 'Tom',
+            time: '10:30',
+            lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
+            unreadCount: '10'
+          },
+          {
+            name: 'Tom',
+            time: '10:30',
+            lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
+            unreadCount: '10'
+          },
+          {
+            name: 'Tom',
+            time: '10:30',
+            lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
+            unreadCount: '10'
+          },
+          {
+            name: 'Tom',
+            time: '10:30',
+            lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
+            unreadCount: '10'
+          },
+          {
+            name: 'Tom',
+            time: '10:30',
+            lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
+            unreadCount: '10'
+          },
+          {
+            name: 'Tom',
+            time: '10:30',
+            lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
+            unreadCount: '10'
+          },
+          {
+            name: 'Tom',
+            time: '10:30',
+            lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
+            unreadCount: '10'
+          },
 
         ]
       },
@@ -63,6 +111,24 @@ export class ChatPage extends Block{
       placeholder: 'Сообщение',
       events: {
         input: (event) => autoSizeTextArea(event!)
+      }
+    })
+
+    this.children.inputtest = new Input({
+      type: 'text',
+      name: 'test',
+      id: 'test',
+      placeholder: 'test',
+      events: {
+        blur: (event) => {
+          console.log(event)
+        },
+        input: (event) => {
+          console.log('input', event)
+        },
+        focus: (event) => {
+          console.log('focus', event)
+        }
       }
     })
   }

@@ -24,6 +24,7 @@ export class RegistrationForm extends Block{
       name: 'email',
       id: 'email',
       labelText: 'Почта',
+
     })
 
     this.children.loginInput = new Input({
