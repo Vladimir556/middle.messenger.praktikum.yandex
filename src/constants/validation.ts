@@ -43,6 +43,6 @@ export const validationValue: Record<string, { regExp?: RegExp, message: string,
   },
   repeatPassword: {
     message: 'пароли должны совпадать',
-    errMessage: 'пароли не совпадают'
-  }
+    errMessage: 'пароли не совпадают',
+  },
 };

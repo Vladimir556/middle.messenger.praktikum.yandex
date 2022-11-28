@@ -1,5 +1,5 @@
-import {renderDom} from "../../../utils/renderDom";
-import {ProfileChangeInfoPage} from "./profileChangeInfo";
+import { renderDom } from '../../../utils/renderDom';
+import { ProfileChangeInfoPage } from './profileChangeInfo';
 
 window.addEventListener('DOMContentLoaded', () => {
   const profilePage = new ProfileChangeInfoPage({

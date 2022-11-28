@@ -2,7 +2,7 @@ import Block from '../../utils/Block';
 import template from './auth.hbs';
 import { LoginForm } from '../../components/Form/loginForm/loginForm';
 import { getFormData } from '../../utils/getFormData';
-import {validateForm} from "../../utils/validateForm";
+import { validateForm } from '../../utils/validateForm';
 
 export class AuthPage extends Block {
   constructor() {
@@ -14,7 +14,7 @@ export class AuthPage extends Block {
       events: {
         submit: (event) => {
           event!.preventDefault();
-          validateForm(event!)
+          validateForm(event!);
           getFormData(event!);
         },
       },
