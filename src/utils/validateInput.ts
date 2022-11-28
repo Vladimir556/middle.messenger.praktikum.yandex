@@ -45,10 +45,9 @@ export function validateInput(event: Event): void{
 
 }
 
-type Validation = keyof typeof validationValue
 
 function blurValidate(name: string, value: string): string{
-  const {regExp, errMessage} = validationValue[name as Validation]
+  const {regExp, errMessage} = validationValue[name]
   if (regExp.test(value)){
     return ''
   } else{
@@ -57,6 +56,6 @@ function blurValidate(name: string, value: string): string{
 }
 
 function focusValidate(name: string): string{
-  const {message} = validationValue[name as Validation]
+  const {message} = validationValue[name]
   return message
 }
