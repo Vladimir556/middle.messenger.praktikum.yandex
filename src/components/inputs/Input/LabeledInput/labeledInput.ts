@@ -1,10 +1,10 @@
-import Block from "../../../../utils/Block";
-import { Input } from "../input";
-import template from "./labeledInput.hbs";
-import * as styles from "./labeledInput.scss";
-import {validateInput} from "../../../../utils/validateInput";
+import Block from '../../../../utils/Block';
+import { Input } from '../input';
+import template from './labeledInput.hbs';
+import * as styles from './labeledInput.scss';
+import { validateInput } from '../../../../utils/validateInput';
 
-interface LabeledInputProps{
+interface LabeledInputProps {
   labelText?: string,
   type: string,
   name: string,
@@ -18,13 +18,13 @@ interface LabeledInputProps{
   }
 }
 
-export class LabeledInput extends Block{
+export class LabeledInput extends Block {
   constructor(props: LabeledInputProps) {
     super(props);
   }
 
   protected init() {
-    this.setProps({styles})
+    this.setProps({ styles });
 
     this.children.input = new Input({
       type: this.props.type,
@@ -35,15 +35,14 @@ export class LabeledInput extends Block{
       placeholder: this.props.placeholder,
       events: {
         blur: (event) => {
-          validateInput(event)
+          validateInput(event);
         },
-        focus: (event) => validateInput(event)
-      }
-    })
+        focus: (event) => validateInput(event),
+      },
+    });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props)
+    return this.compile(template, this.props);
   }
-
 }

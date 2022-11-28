@@ -1,22 +1,22 @@
-import Block from "../../../utils/Block";
-import template from "./backButton.hbs";
-import * as styles from "./backButton.scss"
-import arrowSVG from "./../../../static/arrow.svg"
+import Block from '../../../utils/Block';
+import template from './backButton.hbs';
+import * as styles from './backButton.scss';
+import arrowSVG from '../../../static/arrow.svg';
 
-interface BackButtonProps{
+interface BackButtonProps {
   href: string
 }
 
-export class BackButton extends Block{
+export class BackButton extends Block {
   constructor(props: BackButtonProps) {
     super(props);
   }
 
   protected init() {
-    this.setProps({styles, arrowSVG})
+    this.setProps({ styles, arrowSVG });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props)
+    return this.compile(template, this.props);
   }
 }

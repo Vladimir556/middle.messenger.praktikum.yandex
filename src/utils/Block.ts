@@ -1,29 +1,34 @@
-import {nanoid} from "nanoid";
-import {EventBus} from "./EventBus";
+import { nanoid } from 'nanoid';
+import { EventBus } from './EventBus';
 
 type BlockEvents<P = any> = {
   init: [];
   'flow:component-did-mount': [];
   'flow:component-did-update': [P, P];
   'flow:render': [];
-}
+};
 
 type Props<P extends Record<string, unknown> = any> = { events?: Record<string, () => void> } & P;
 
 export default abstract class Block<P extends Record<string, unknown> = any> {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
   } as const;
 
   public id = nanoid(6);
+
   public children: Record<string, Block>;
+
   protected props: Props<P>;
-  private eventBus: () => EventBus<BlockEvents<Props<P>>>
+
+  private eventBus: () => EventBus<BlockEvents<Props<P>>>;
+
   private _element: HTMLElement | null = null;
-  private _meta: {props: Props<P>};
+
+  private _meta: { props: Props<P> };
 
   /** JSDoc
    * @param {string} tagName
@@ -35,10 +40,10 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     const eventBus = new EventBus<BlockEvents<Props<P>>>();
     this.eventBus = () => eventBus;
 
-    const {props, children} = this._getChildrenAndProps(propsWithChildren);
+    const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
     this._meta = {
-      props
+      props,
     };
 
     this.children = children;
@@ -53,17 +58,17 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   }
 
   private _removeEvents() {
-    const events: Record<string, () => void> = (this.props as Props).events;
+    const { events } = this.props as Props;
 
     if (!events || !this._element) {
-      return;
+
     }
   }
 
   private _addEvents() {
-    const {events = {}} = this.props;
+    const { events = {} } = this.props;
 
-    Object.keys(events).forEach(eventName => {
+    Object.keys(events).forEach((eventName) => {
       this._element?.addEventListener(eventName, events[eventName]);
     });
   }
@@ -85,7 +90,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
 
   protected init() {}
 
-  private _init(){
+  private _init() {
     this.init();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -100,7 +105,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
+    Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
   }
 
   private _componentDidUpdate(oldProps: Props<P>, newProps: Props<P>) {
@@ -109,7 +114,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
       return;
     }
 
-    this.componentDidUpdate(oldProps, newProps)
+    this.componentDidUpdate(oldProps, newProps);
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
@@ -128,14 +133,14 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   private _render() {
     const block = this.render();
 
-    const newBlock = block.firstElementChild as HTMLElement
+    const newBlock = block.firstElementChild as HTMLElement;
 
-    if (this._element){
-      this._removeEvents()
-      this._element.replaceWith(newBlock)
+    if (this._element) {
+      this._removeEvents();
+      this._element.replaceWith(newBlock);
     }
 
-    this._element = newBlock
+    this._element = newBlock;
 
     this._addEvents();
   }
@@ -146,7 +151,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
 
   protected compile(template: (context: any) => string, context: any) {
     // все пропсы компонента
-    const contextAndStubs = {...context};
+    const contextAndStubs = { ...context };
 
     Object.entries(this.children).forEach(([name, component]) => {
       contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
@@ -168,7 +173,6 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
       component.getContent()?.append(...Array.from(stub.childNodes));
 
       stub.replaceWith(component.getContent()!);
-
     });
 
     return temp.content;
@@ -190,7 +194,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
       }
     });
 
-    return {props: props as Props<P>, children};
+    return { props: props as Props<P>, children };
   }
 
   private _makePropsProxy(props: Props<P>) {
@@ -202,7 +206,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
-        const oldTarget = {...target}
+        const oldTarget = { ...target };
 
         target[prop as keyof Props<P>] = value;
 
@@ -214,7 +218,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
       },
       deleteProperty() {
         throw new Error('Нет доступа');
-      }
+      },
     });
   }
 
@@ -224,11 +228,10 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   }
 
   public show() {
-    this.getContent()!.style.display = "block";
+    this.getContent()!.style.display = 'block';
   }
 
   public hide() {
-    this.getContent()!.style.display = "none";
+    this.getContent()!.style.display = 'none';
   }
 }
-

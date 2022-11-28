@@ -1,10 +1,10 @@
-import Block from "../../../utils/Block";
-import template from "./profileForm.hbs";
-import {LabeledInput} from "../../inputs/Input/LabeledInput/labeledInput";
-import {Link} from "../../buttons/Link/link";
-import {Button} from "../../buttons/Button/button";
+import Block from '../../../utils/Block';
+import template from './profileForm.hbs';
+import { LabeledInput } from '../../inputs/Input/LabeledInput/labeledInput';
+import { Link } from '../../buttons/Link/link';
+import { Button } from '../../buttons/Button/button';
 
-interface ProfileFormProps{
+interface ProfileFormProps {
   isChangeForm: boolean,
   email: string
   login: string
@@ -17,22 +17,20 @@ interface ProfileFormProps{
   }
 }
 
-export class ProfileForm extends Block{
+export class ProfileForm extends Block {
   constructor(props: ProfileFormProps) {
     super(props);
   }
 
   protected init() {
-
-
     this.children.emailInput = new LabeledInput({
       type: 'text',
       disabled: !this.props.isChangeForm,
       name: 'email',
       id: 'email',
       labelText: 'Почта',
-      value: this.props.email
-    })
+      value: this.props.email,
+    });
 
     this.children.loginInput = new LabeledInput({
       type: 'text',
@@ -40,8 +38,8 @@ export class ProfileForm extends Block{
       name: 'login',
       id: 'login',
       labelText: 'Логин',
-      value: this.props.login
-    })
+      value: this.props.login,
+    });
 
     this.children.firstNameInput = new LabeledInput({
       type: 'text',
@@ -49,8 +47,8 @@ export class ProfileForm extends Block{
       name: 'first_name',
       id: 'first_name',
       labelText: 'Имя',
-      value: this.props.first_name
-    })
+      value: this.props.first_name,
+    });
 
     this.children.secondNameInput = new LabeledInput({
       type: 'text',
@@ -58,8 +56,8 @@ export class ProfileForm extends Block{
       name: 'second_name',
       id: 'second_name',
       labelText: 'Фамилия',
-      value: this.props.second_name
-    })
+      value: this.props.second_name,
+    });
 
     this.children.displayNameInput = new LabeledInput({
       type: 'text',
@@ -67,8 +65,8 @@ export class ProfileForm extends Block{
       name: 'display_name',
       id: 'display_name',
       labelText: 'Имя в чате',
-      value: this.props.display_name
-    })
+      value: this.props.display_name,
+    });
 
     this.children.phoneInput = new LabeledInput({
       type: 'text',
@@ -76,31 +74,30 @@ export class ProfileForm extends Block{
       name: 'phone',
       id: 'phone',
       labelText: 'Телефон',
-      value: this.props.phone
-    })
+      value: this.props.phone,
+    });
 
     this.children.changeInfoLink = new Link({
       text: 'Изменить данные',
-      href: ''
-    })
+      href: '',
+    });
 
     this.children.changePasswordLink = new Link({
       text: 'Изменить пароль',
-      href: ''
-    })
+      href: '',
+    });
 
     this.children.logOutLink = new Link({
       text: 'Выйти',
-      href: '/Auth/'
-    })
+      href: '/Auth/',
+    });
 
     this.children.saveButton = new Button({
-      text: 'Сохранить'
-    })
-
+      text: 'Сохранить',
+    });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props)
+    return this.compile(template, this.props);
   }
 }

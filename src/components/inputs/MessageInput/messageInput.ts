@@ -1,22 +1,22 @@
-import Block from "../../../utils/Block";
-import template from "./messageInput.hbs";
+import Block from '../../../utils/Block';
+import template from './messageInput.hbs';
 
-interface MessageInputProps{
+interface MessageInputProps {
   name: string,
   id: string,
   placeholder?: string,
   value?: string
   events?: {
-    input: (event?: InputEvent & {target: HTMLTextAreaElement}) => void
+    input: (event?: InputEvent & { target: HTMLTextAreaElement }) => void
   }
 }
 
-export class MessageInput extends Block{
+export class MessageInput extends Block {
   constructor(props: MessageInputProps) {
     super(props);
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props)
+    return this.compile(template, this.props);
   }
 }

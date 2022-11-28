@@ -17,7 +17,7 @@ export class EventBus<E extends Record<string, unknown[]>> {
     }
 
     this.listeners[event] = this.listeners[event]!.filter(
-      listener => listener !== callback
+      (listener) => listener !== callback,
     );
   }
 
@@ -26,7 +26,7 @@ export class EventBus<E extends Record<string, unknown[]>> {
       return;
     }
 
-    this.listeners[event]!.forEach(listener => {
+    this.listeners[event]!.forEach((listener) => {
       listener(...args);
     });
   }

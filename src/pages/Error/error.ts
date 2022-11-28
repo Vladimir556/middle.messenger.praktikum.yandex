@@ -1,28 +1,28 @@
-import Block from "../../utils/Block";
-import template from "./error.hbs";
-import * as styles from "./error.scss"
-import {Link} from "../../components/buttons/Link/link";
+import Block from '../../utils/Block';
+import template from './error.hbs';
+import * as styles from './error.scss';
+import { Link } from '../../components/buttons/Link/link';
 
-interface ErrorPageProps{
+interface ErrorPageProps {
   statusCode: number,
   errorMessage: string
 }
 
-export class ErrorPage extends Block{
+export class ErrorPage extends Block {
   constructor(props: ErrorPageProps) {
     super(props);
   }
 
   protected init() {
-    this.setProps({styles})
+    this.setProps({ styles });
 
     this.children.backToChatsLink = new Link({
       text: 'Назад к чатам',
-      href: '/'
-    })
+      href: '/',
+    });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props)
+    return this.compile(template, this.props);
   }
 }

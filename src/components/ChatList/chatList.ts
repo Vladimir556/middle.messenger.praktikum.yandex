@@ -1,15 +1,15 @@
-import Block from "../../utils/Block";
-import template from "./chatList.hbs";
-import * as styles from "./chatList.scss";
+import Block from '../../utils/Block';
+import template from './chatList.hbs';
+import * as styles from './chatList.scss';
 
-interface ChatListProp{
+interface ChatListProp {
   name: string
   time: string,
   lastMessage: string,
   unreadCount?: string
 }
 
-interface ChatListProps{
+interface ChatListProps {
   chats: ChatListProp[]
 }
 
@@ -19,10 +19,10 @@ export class ChatList extends Block {
   }
 
   protected init() {
-    this.setProps({styles})
+    this.setProps({ styles });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props)
+    return this.compile(template, this.props);
   }
 }
