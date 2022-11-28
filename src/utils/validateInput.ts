@@ -1,55 +1,71 @@
 import { validationValue } from '../constants/validation';
 
-export function validateInput(event: Event): void {
-  const { name, value } = event.target as HTMLInputElement;
-  const errorMessage = document.querySelector(`#validate_${name}`) as HTMLElement;
-  const tipMessage = document.querySelector(`#tip_${name}`) as HTMLElement;
-  let result = '';
-
-  if (!(validationValue as object).hasOwnProperty(name)) {
-    return;
-  }
-
-  switch (event.type) {
-    case 'blur':
-      errorMessage!.style.display = 'block';
-      tipMessage!.style.display = 'none';
-
-      if (name === 'repeatPassword') {
-        const passwordInput = document.querySelector('#password') as HTMLInputElement;
-        if (value !== passwordInput.value) {
-          result = 'Пароли не совпадают';
-        }
-        errorMessage!.textContent = result;
-        return;
-      }
-
-      result = blurValidate(name, value);
-      errorMessage!.innerHTML = result;
-      return;
-    case 'focus':
-      errorMessage!.style.display = 'none';
-      tipMessage!.style.display = 'block';
-
-      if (name === 'repeatPassword') {
-        tipMessage!.textContent = 'пароли должны совпадать';
-        return;
-      }
-
-      result = focusValidate(name);
-      tipMessage!.textContent = result;
-  }
-}
-
-function blurValidate(name: string, value: string): string {
+function blurOrSubmitValidate(name: string, value: string): string {
   const { regExp, errMessage } = validationValue[name];
-  if (regExp.test(value)) {
-    return '';
+  if (regExp){
+    if (regExp.test(value)) {
+      return '';
+    }
+    return errMessage;
   }
-  return errMessage;
+  return ''
 }
 
 function focusValidate(name: string): string {
   const { message } = validationValue[name];
   return message;
 }
+
+export function validateInput(event: Event, inputName?: string, inputValue?: string): boolean {
+  let name: string
+  let value: string
+
+  if (inputName !== undefined && inputValue !== undefined){
+    name = inputName
+    value = inputValue
+  } else {
+    name = (event.target as HTMLInputElement).name
+    value = (event.target as HTMLInputElement).value
+  }
+
+  const errorMessage = document.querySelector(`#validate_${name}`) as HTMLElement;
+  const tipMessage = document.querySelector(`#tip_${name}`) as HTMLElement;
+
+  let result = '';
+
+  if (!(validationValue as object).hasOwnProperty(name)) {
+    return false;
+  }
+
+  switch (event.type) {
+    case 'focus':
+      errorMessage!.style.display = 'none';
+      tipMessage!.style.display = 'block';
+
+      if (name === 'repeatPassword') {
+        tipMessage!.textContent = validationValue[name].message;
+        return true;
+      }
+
+      result = focusValidate(name);
+      tipMessage!.textContent = result;
+      return true;
+    default:
+      errorMessage!.style.display = 'block';
+      tipMessage!.style.display = 'none';
+
+      if (name === 'repeatPassword') {
+        const passwordInput = document.querySelector('#password') as HTMLInputElement;
+        if (value !== passwordInput.value) {
+          result = validationValue[name].errMessage;
+        }
+        errorMessage!.textContent = result;
+        return !(!!result);
+      }
+
+      result = blurOrSubmitValidate(name, value);
+      errorMessage!.innerHTML = result;
+      return !(!!result);
+  }
+}
+

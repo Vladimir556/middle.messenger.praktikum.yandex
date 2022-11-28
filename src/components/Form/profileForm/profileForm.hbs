@@ -1,11 +1,17 @@
 <form>
   <div class="profile-container__userinfo">
-    {{{emailInput}}}
-    {{{loginInput}}}
-    {{{firstNameInput}}}
-    {{{secondNameInput}}}
-    {{{displayNameInput}}}
-    {{{phoneInput}}}
+    {{#if isChangePassForm}}
+      {{{passwordOldInput}}}
+      {{{passwordInput}}}
+      {{{passwordRepeatInput}}}
+    {{else}}
+      {{{emailInput}}}
+      {{{loginInput}}}
+      {{{firstNameInput}}}
+      {{{secondNameInput}}}
+      {{{displayNameInput}}}
+      {{{phoneInput}}}
+    {{/if}}
   </div>
   <div class="profile-container__buttons">
     {{#if isChangeForm}}

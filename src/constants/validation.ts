@@ -1,4 +1,4 @@
-export const validationValue: Record<string, { regExp: RegExp, message: string, errMessage: string }> = {
+export const validationValue: Record<string, { regExp?: RegExp, message: string, errMessage: string }> = {
   email: {
     regExp: /^[a-zA-Z0-9_-]+[@][a-zA-Z]+[.][a-zA-Z]+/,
     message:
@@ -35,4 +35,14 @@ export const validationValue: Record<string, { regExp: RegExp, message: string, 
       'от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра.',
     errMessage: 'пароль введен не правильно',
   },
+  oldPassword: {
+    regExp: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,40}$/,
+    message:
+      'от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра.',
+    errMessage: 'пароль введен не правильно',
+  },
+  repeatPassword: {
+    message: 'пароли должны совпадать',
+    errMessage: 'пароли не совпадают'
+  }
 };

@@ -6,14 +6,15 @@ import { Button } from '../../buttons/Button/button';
 
 interface ProfileFormProps {
   isChangeForm: boolean,
-  email: string
-  login: string
-  first_name: string
-  second_name: string
-  display_name: string
-  phone: string
+  isChangePassForm?: boolean,
+  email?: string
+  login?: string
+  first_name?: string
+  second_name?: string
+  display_name?: string
+  phone?: string
   events?:{
-    submit: (event: Event) => void
+    submit?: (event: Event) => void
   }
 }
 
@@ -77,14 +78,41 @@ export class ProfileForm extends Block {
       value: this.props.phone,
     });
 
+    this.children.passwordOldInput = new LabeledInput({
+      type: 'password',
+      disabled: !this.props.isChangeForm,
+      name: 'oldPassword',
+      id: 'oldPassword',
+      labelText: 'Старый пароль',
+      value: this.props.phone,
+    });
+
+    this.children.passwordInput = new LabeledInput({
+      type: 'password',
+      disabled: !this.props.isChangeForm,
+      name: 'password',
+      id: 'password',
+      labelText: 'Новый пароль',
+      value: this.props.phone,
+    });
+
+    this.children.passwordRepeatInput = new LabeledInput({
+      type: 'password',
+      disabled: !this.props.isChangeForm,
+      name: 'repeatPassword',
+      id: 'repeatPassword',
+      labelText: 'Повторите новый пароль',
+      value: this.props.phone,
+    });
+
     this.children.changeInfoLink = new Link({
       text: 'Изменить данные',
-      href: '',
+      href: '/Profile/changeInfo',
     });
 
     this.children.changePasswordLink = new Link({
       text: 'Изменить пароль',
-      href: '',
+      href: '/Profile/changePass',
     });
 
     this.children.logOutLink = new Link({

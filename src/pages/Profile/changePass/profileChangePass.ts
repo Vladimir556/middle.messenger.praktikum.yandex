@@ -7,18 +7,10 @@ import {BackButton} from "../../../components/buttons/BackButton/backButton";
 import {validateForm} from "../../../utils/validateForm";
 import {getFormData} from "../../../utils/getFormData";
 
-interface ProfileChangeInfoPageProps {
-  email: string
-  login: string
-  first_name: string
-  second_name: string
-  display_name: string
-  phone: string
-}
 
-export class ProfileChangeInfoPage extends Block {
-  constructor(props: ProfileChangeInfoPageProps) {
-    super(props);
+export class ProfileChangePassPage extends Block {
+  constructor() {
+    super();
   }
 
   protected init() {
@@ -30,12 +22,7 @@ export class ProfileChangeInfoPage extends Block {
 
     this.children.profileForm = new ProfileForm({
       isChangeForm: true,
-      email: this.props.email,
-      login: this.props.login,
-      first_name: this.props.first_name,
-      second_name: this.props.second_name,
-      display_name: this.props.display_name,
-      phone: this.props.phone,
+      isChangePassForm: true,
       events:{
         submit: (event) => {
           event.preventDefault()

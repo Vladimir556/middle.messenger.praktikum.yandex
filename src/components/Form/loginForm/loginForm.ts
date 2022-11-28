@@ -35,6 +35,7 @@ export class LoginForm extends Block {
 
     this.children.buttonLogin = new Button({
       text: 'Войти',
+
     });
 
     this.children.registerLink = new Link({
