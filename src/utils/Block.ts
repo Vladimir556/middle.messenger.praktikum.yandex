@@ -58,7 +58,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   }
 
   private _removeEvents() {
-    const { events } = this.props as Props;
+    const { events } = this.props;
 
     if (!events || !this._element) {
       return
