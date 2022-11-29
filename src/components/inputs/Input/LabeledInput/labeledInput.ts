@@ -34,10 +34,8 @@ export class LabeledInput extends Block {
       value: this.props.value,
       placeholder: this.props.placeholder,
       events: {
-        blur: (event) => {
-          validateInput(event);
-        },
-        focus: (event) => validateInput(event),
+        blur: validateInput,
+        focus: validateInput,
       },
     });
   }

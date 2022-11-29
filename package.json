@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "messenger app",
   "scripts": {
-    "dev": "parcel src/pages/index.html src/pages/Auth/index.html src/pages/Error/Error5/index.html src/pages/Error/Error404/index.html src/pages/Profile/index.html src/pages/Registration/index.html src/pages/Profile/changeInfo/index.html src/pages/Profile/changePass/index.html --port 3000 --no-cache",
+    "dev": "parcel src/pages/index.html src/pages/Auth/index.html src/pages/Error/Error5/index.html src/pages/Error/Error404/index.html src/pages/Profile/index.html src/pages/Registration/index.html src/pages/Profile/changeInfo/index.html src/pages/Profile/changePass/index.html --port 3000 --no-cache --open",
     "server": "node ./server/index.js",
     "build": "parcel build src/pages/index.html src/pages/Auth/index.html src/pages/Error/Error5/index.html src/pages/Error/Error404/index.html src/pages/Profile/index.html src/pages/Registration/index.html src/pages/Profile/changeInfo/index.html src/pages/Profile/changePass/index.html",
     "eslint": "eslint .",
