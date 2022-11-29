@@ -1,6 +1,6 @@
-import Block from "../../utils/Block";
-import template from "./chatHistory.hbs";
-import * as styles from "./chatHistory.scss"
+import Block from '../../utils/Block';
+import template from './chatHistory.hbs';
+import * as styles from './chatHistory.scss';
 
 interface Message {
   type: string,
@@ -18,11 +18,10 @@ export class ChatHistory extends Block {
   }
 
   protected init() {
-    this.setProps({styles})
-
+    this.setProps({ styles });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props)
+    return this.compile(template, this.props);
   }
 }
