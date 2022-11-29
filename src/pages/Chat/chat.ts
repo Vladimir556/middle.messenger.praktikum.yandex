@@ -8,7 +8,7 @@ import clipSVG from '../../static/grayClip.svg';
 import contextMenuSVG from '../../static/contextMenu.svg';
 import { autoSizeTextArea } from '../../utils/autoSizeTextArea';
 import { LabeledInput } from '../../components/inputs/Input/LabeledInput/labeledInput';
-import {ChatHistory} from "../../components/ChatHistory/chatHistory";
+import { ChatHistory } from '../../components/ChatHistory/chatHistory';
 
 interface ChatPageProps {
   profileName: string,
@@ -104,31 +104,30 @@ export class ChatPage extends Block {
     });
 
     this.children.chatHistory = new ChatHistory({
-      messages:[
+      messages: [
         {
           type: 'send',
           text: 'Хорошо',
-          time: '10:20'
+          time: '10:20',
         },
         {
           type: 'received',
           text: 'как дела?',
-          time: '10:19'
+          time: '10:19',
         },
         {
           type: 'send',
           text: 'Привет',
-          time: '10:18'
+          time: '10:18',
         },
         {
           type: 'received',
           text: 'Привет',
-          time: '10:18'
+          time: '10:18',
         },
 
-
-      ]
-    })
+      ],
+    });
 
     this.children.messageInput = new MessageInput({
       name: 'message',

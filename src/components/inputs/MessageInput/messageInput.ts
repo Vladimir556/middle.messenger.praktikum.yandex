@@ -1,6 +1,6 @@
 import Block from '../../../utils/Block';
 import template from './messageInput.hbs';
-import * as styles from "./messageInput.scss"
+import * as styles from './messageInput.scss';
 
 interface MessageInputProps {
   name: string,
@@ -18,7 +18,7 @@ export class MessageInput extends Block {
   }
 
   protected init() {
-    this.setProps({styles})
+    this.setProps({ styles });
   }
 
   protected render(): DocumentFragment {
