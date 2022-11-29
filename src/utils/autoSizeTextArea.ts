@@ -13,7 +13,5 @@ export function autoSizeTextArea(event: InputEvent & { target: HTMLTextAreaEleme
     } else {
       target.style.height = `${target.scrollHeight}px`;
     }
-  } else {
-
   }
 }

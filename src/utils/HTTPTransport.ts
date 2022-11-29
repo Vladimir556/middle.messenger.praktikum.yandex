@@ -16,6 +16,8 @@ type Options = {
 
 type OptionsWithNoMethod = Omit<Options, 'method'>;
 
+type HTTPMethod = (url: string, options?: OptionsWithNoMethod) => Promise<XMLHttpRequest>;
+
 export class HTTPTransport {
   public static METHOD = {
     GET: 'GET',
@@ -30,26 +32,26 @@ export class HTTPTransport {
     ERR_CONNECTION_ERROR: 'Произошла ошибка при выполнении запроса',
   } as const;
 
-  public get(url: string, options: OptionsWithNoMethod = {}) {
+  public get: HTTPMethod = (url, options = {}) => {
     if (options.data) {
       url += queryStringify(options.data);
     }
     return this.request(url, { ...options, method: HTTPTransport.METHOD.GET });
-  }
+  };
 
-  public post(url: string, options: OptionsWithNoMethod = {}) {
-    return this.request(url, { ...options, method: HTTPTransport.METHOD.POST });
-  }
+  public put: HTTPMethod = (url, options = {}) => (
+    this.request(url, { ...options, method: HTTPTransport.METHOD.PUT })
+  );
 
-  public put(url: string, options: OptionsWithNoMethod = {}) {
-    return this.request(url, { ...options, method: HTTPTransport.METHOD.PUT });
-  }
+  public post: HTTPMethod = (url, options = {}) => (
+    this.request(url, { ...options, method: HTTPTransport.METHOD.POST })
+  );
 
-  public delete(url: string, options: OptionsWithNoMethod = {}) {
-    return this.request(url, { ...options, method: HTTPTransport.METHOD.DELETE });
-  }
+  public delete: HTTPMethod = (url, options = {}) => (
+    this.request(url, { ...options, method: HTTPTransport.METHOD.DELETE })
+  );
 
-  public request(url: string, options: Options) {
+  public request = (url: string, options: Options): Promise<XMLHttpRequest> => {
     const {
       headers, data, method, timeout = 5000,
     } = options;
@@ -82,5 +84,5 @@ export class HTTPTransport {
       xhr.ontimeout = () => reject(new Error(HTTPTransport.Error.ERR_CONNECTION_TIMED_OUT));
       xhr.onerror = () => reject(new Error(HTTPTransport.Error.ERR_CONNECTION_ERROR));
     });
-  }
+  };
 }

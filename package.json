@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "messenger app",
   "scripts": {
-    "dev": "parcel src/pages/index.html src/pages/Auth/index.html src/pages/Error/Error5/index.html src/pages/Error/Error404/index.html src/pages/Profile/index.html src/pages/Registration/index.html src/pages/Profile/changeInfo/index.html src/pages/Profile/changePass/index.html --port 3000 --no-cache",
+    "dev": "parcel src/pages/index.html src/pages/Auth/index.html src/pages/Error/Error5/index.html src/pages/Error/Error404/index.html src/pages/Profile/index.html src/pages/Registration/index.html src/pages/Profile/changeInfo/index.html src/pages/Profile/changePass/index.html --port 3000 --no-cache --open",
     "server": "node ./server/index.js",
     "build": "parcel build src/pages/index.html src/pages/Auth/index.html src/pages/Error/Error5/index.html src/pages/Error/Error404/index.html src/pages/Profile/index.html src/pages/Registration/index.html src/pages/Profile/changeInfo/index.html src/pages/Profile/changePass/index.html",
     "eslint": "eslint .",
@@ -24,29 +24,29 @@
   },
   "homepage": "https://github.com/Vladimir556/middle.messenger.praktikum.yandex#readme",
   "dependencies": {
-    "express": "^4.18.2",
-    "handlebars": "^4.7.7",
-    "nanoid": "^4.0.0"
+    "express": "4.18.2",
+    "handlebars": "4.7.7",
+    "nanoid": "4.0.0"
   },
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "@anikin/parcel-transformer-handlebars-precompile": "^1.0.1",
-    "@parcel/transformer-sass": "^2.7.0",
-    "@typescript-eslint/eslint-plugin": "^5.43.0",
-    "@typescript-eslint/parser": "^5.43.0",
-    "eslint": "^8.27.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "parcel": "^2.7.0",
-    "postcss": "^8.4.19",
-    "postcss-scss": "^4.0.6",
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
+    "@parcel/transformer-sass": "2.7.0",
+    "@typescript-eslint/eslint-plugin": "5.43.0",
+    "@typescript-eslint/parser": "5.43.0",
+    "eslint": "8.27.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-airbnb-typescript": "17.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "parcel": "2.7.0",
+    "postcss": "8.4.19",
+    "postcss-scss": "4.0.6",
     "prettier": "2.8.0",
-    "sass": "^1.56.1",
-    "stylelint": "^14.15.0",
-    "stylelint-config-standard": "^29.0.0",
-    "stylelint-scss": "^4.3.0",
-    "typescript": "^4.8.4"
+    "sass": "1.56.1",
+    "stylelint": "14.15.0",
+    "stylelint-config-standard": "29.0.0",
+    "stylelint-scss": "4.3.0",
+    "typescript": "4.8.4"
   },
   "browserslist": {
     "production": [

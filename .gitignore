@@ -4,3 +4,4 @@ dist
 .parcel-cache
 .vscode
 node_modules
+.env
