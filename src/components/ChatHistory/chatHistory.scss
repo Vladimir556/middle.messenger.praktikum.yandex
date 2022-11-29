@@ -1,0 +1,44 @@
+@import "src/styles/variables";
+
+.history{
+  display: flex;
+  flex-direction:column-reverse;
+  overflow-y: auto;
+  height: 100%;
+  .message__send{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-left: 50%;
+    width: 50%;
+    .message__text{
+      background: $lightBlueColor;
+      border-radius: 12px 12px 0 12px;
+    }
+    .message__time{
+      color: $blueColor;
+    }
+  }
+  .message__received{
+    display: flex;
+    width: 50%;
+    .message__text{
+      background: $backGroundLightGrayColor;
+      border-radius: 0 12px 12px 12px;
+    }
+    .message__time{
+      color: $grayColor;
+    }
+  }
+  .message__text{
+    padding: 10px;
+    margin: 0 20px;
+    &:first-child{
+      margin-bottom: 20px;
+    }
+  }
+  .message__time{
+    font-size: 9px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}

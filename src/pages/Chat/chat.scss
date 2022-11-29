@@ -87,10 +87,6 @@
           }
         }
       }
-
-      &__history{
-        height: 100%;
-      }
       &__bottom-panel{
         display: flex;
         align-items: center;
@@ -106,24 +102,6 @@
           height: 32px;
           &:hover{
             cursor: pointer;
-          }
-        }
-        .message-input{
-          width: 100%;
-          margin-left: 10px;
-          textarea{
-            resize: none;
-            font-size: 12px;
-            height: 35px;
-            padding: 10px 20px;
-            border-radius: 30px;
-            background: $backGroundGrayColor;
-            border: 0;
-            outline: none;
-            width: 100%;
-            &::-webkit-scrollbar{
-              display: none;
-            }
           }
         }
         .send-button{
