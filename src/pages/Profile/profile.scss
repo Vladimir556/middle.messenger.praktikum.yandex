@@ -1,0 +1,97 @@
+@import "src/styles/variables";
+
+.profile-container {
+  width: 510px;
+
+  &__avatar {
+    margin: 60px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 130px;
+    background: $backGroundGrayColor;
+    border-radius: 50%;
+  }
+
+  &__username {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 600;
+  }
+
+  &__userinfo {
+    margin-top: 60px;
+    width: 100%;
+
+    .text-input {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      padding: 10px;
+      border-bottom: 1px solid $backGroundGrayColor;
+      justify-content: space-between;
+      font-size: 13px;
+      white-space: nowrap;
+      color: $blackColor;
+      margin: 0;
+
+      &:last-child {
+        border-bottom: 1px solid transparent;
+      }
+
+      input {
+        width: 100%;
+        text-align: right;
+        color: $grayColor;
+        border-bottom: none;
+        margin: 0;
+
+        &:disabled {
+          background: $whiteColor;
+        }
+      }
+
+      &__tip {
+        position: absolute;
+        bottom: 0;
+        right: -210px;
+        width: 200px;
+        white-space: pre-wrap;
+        background: $backGroundLightGrayColor;
+        border: 1px solid $backGroundGrayColor;
+        padding: 10px;
+        margin-left: 10px;
+        border-radius: 20px 20px 20px 0;
+      }
+
+      &__validation {
+        position: absolute;
+        bottom: -15;
+        right: 0;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+
+    .button {
+      margin: 0 auto;
+    }
+
+    .button-link {
+      justify-content: start;
+      border-bottom: 1px solid $backGroundGrayColor;
+      font-size: 13px;
+      padding: 10px;
+
+      &:last-child {
+        border-bottom: 1px solid transparent;
+        color: $redColor;
+      }
+    }
+  }
+}

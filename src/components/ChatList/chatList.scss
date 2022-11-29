@@ -1,0 +1,78 @@
+@import "src/styles/variables";
+
+.chat-list {
+  height: 100%;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__item {
+    padding: 12px 10px;
+    display: flex;
+    border-bottom: 1px solid $backGroundGrayColor;
+
+    &:hover {
+      cursor: pointer;
+      background: $lightBlueColor;
+    }
+
+    .image {
+      min-width: 47px;
+      height: 47px;
+      border-radius: 50%;
+      background-color: $backGroundGrayColor;
+    }
+
+    .info {
+      margin: 0 0 0 10px;
+      width: 100%;
+
+      &__row {
+        display: flex;
+        justify-content: space-between;
+
+        .title {
+          font-size: 13px;
+          font-weight: 600;
+        }
+
+        .time {
+          font-size: 9px;
+          color: $grayColor;
+        }
+      }
+
+      .subtitle {
+        display: flex;
+        height: 30px;
+
+        .last-message {
+          width: 100%;
+          margin-right: 40px;
+          color: $grayColor;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .badge {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 20px;
+          height: 20px;
+          margin-bottom: 0;
+          margin-top: auto;
+          border-radius: 50%;
+          background-color: $blueColor;
+          font-family: Inter;
+          font-size: 11px;
+          color: $whiteColor;
+        }
+      }
+    }
+  }
+}

@@ -1,44 +1,10 @@
----
-email: "pochta@yandex.ru"
-login: "ivanivanov"
-first_name: "Иван"
-second_name: "Иванов"
-display_name: "Иван"
-phone: "+79099673030"
----
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./../../styles/styles.scss">
-  <title>Профиль</title>
-</head>
-<body>
-  <div id="root">
-    <main>
-      {{> backButton href="./../Chat/chat.hbs"}}
-      <div class="profile-container">
-        <div class="profile-container__avatar">
-          <img src="./../../static/avatar.svg" alt="avatar">
-        </div>
-        <h3 class="profile-container__username">{{display_name}}</h3>
-        <div class="profile-container__userinfo">
-          {{> input type="text" disabled="true" name="email" id="email" labelText="Почта" value=email}}
-          {{> input type="text" disabled="true" name="login" id="login" labelText="Логин" value=login}}
-          {{> input type="text" disabled="true" name="first_name" id="first_name" labelText="Имя" value=first_name}}
-          {{> input type="text" disabled="true" name="second_name" id="second_name" labelText="Фамилия" value=second_name}}
-          {{> input type="text" disabled="true" name="display_name" id="display_name" labelText="Имя в чате" value=display_name}}
-          {{> input type="text" disabled="true" name="phone" id="phone" labelText="Телефон" value=phone}}
-        </div>
-        <div class="profile-container__buttons">
-          {{> link href="./../Profile/changeInfo.hbs" text="Изменить данные"}}
-          {{> link href="./../Profile/changePass.hbs" text="Изменить пароль"}}
-          {{> link href="./../Auth/auth.hbs" text="Выйти"}}
-        </div>
-      </div>
-    </main>
+<main>
+  {{{backButton}}}
+  <div class="profile-container">
+    <div class="profile-container__avatar">
+      <img src="{{avatarSVG}}" alt="avatar">
+    </div>
+    <h3 class="profile-container__username">{{display_name}}</h3>
+    {{{profileForm}}}
   </div>
-</body>
-</html>
+</main>
