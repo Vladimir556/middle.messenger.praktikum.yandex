@@ -61,12 +61,12 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     const { events } = this.props;
 
     if (!events || !this._element) {
-      return
+      return;
     }
 
     Object.keys(events).forEach((eventName) => {
-      this._element?.removeEventListener(eventName, events[eventName])
-    })
+      this._element?.removeEventListener(eventName, events[eventName]);
+    });
   }
 
   private _addEvents() {
