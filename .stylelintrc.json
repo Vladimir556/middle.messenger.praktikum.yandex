@@ -9,5 +9,6 @@
     "scss/dollar-variable-pattern": "^foo",
     "scss/selector-no-redundant-nesting-selector": true,
     "selector-list-comma-newline-after": "never-multi-line"
-  }
+  },
+  "ignoreFiles": ["**/*.css"]
 }
