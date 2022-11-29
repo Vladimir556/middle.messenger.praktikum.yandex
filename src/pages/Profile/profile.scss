@@ -1,9 +1,10 @@
 @import "src/styles/variables";
 
-.profile-container{
+.profile-container {
   width: 510px;
-  &__avatar{
-    margin: 60px auto 0px auto;
+
+  &__avatar {
+    margin: 60px auto 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,15 +13,18 @@
     background: $backGroundGrayColor;
     border-radius: 50%;
   }
-  &__username{
+
+  &__username {
     text-align: center;
     margin-top: 20px;
     font-weight: 600;
   }
-  &__userinfo{
+
+  &__userinfo {
     margin-top: 60px;
     width: 100%;
-    .text-input{
+
+    .text-input {
       position: relative;
       display: flex;
       flex-direction: row;
@@ -31,20 +35,24 @@
       white-space: nowrap;
       color: $blackColor;
       margin: 0;
-      &:last-child{
+
+      &:last-child {
         border-bottom: 1px solid transparent;
       }
-      input{
+
+      input {
         width: 100%;
         text-align: right;
         color: $grayColor;
         border-bottom: none;
         margin: 0;
-        &:disabled{
+
+        &:disabled {
           background: $whiteColor;
         }
       }
-      &__tip{
+
+      &__tip {
         position: absolute;
         bottom: 0;
         right: -210px;
@@ -54,28 +62,33 @@
         border: 1px solid $backGroundGrayColor;
         padding: 10px;
         margin-left: 10px;
-        border-radius: 20px 20px 20px 0 ;
+        border-radius: 20px 20px 20px 0;
       }
-      &__validation{
+
+      &__validation {
         position: absolute;
         bottom: -15;
         right: 0;
       }
     }
   }
-  &__buttons{
+
+  &__buttons {
     display: flex;
     flex-direction: column;
     margin-top: 60px;
-    .button{
+
+    .button {
       margin: 0 auto;
     }
-    .button-link{
+
+    .button-link {
       justify-content: start;
       border-bottom: 1px solid $backGroundGrayColor;
       font-size: 13px;
       padding: 10px;
-      &:last-child{
+
+      &:last-child {
         border-bottom: 1px solid transparent;
         color: $redColor;
       }

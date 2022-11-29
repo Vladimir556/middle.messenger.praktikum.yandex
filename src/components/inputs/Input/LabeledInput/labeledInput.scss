@@ -1,27 +1,28 @@
 @import "src/styles/variables";
 
-.text-input{
+.text-input {
   display: flex;
   flex-direction: column;
   font-size: 9px;
   color: $grayColor;
 
-  &__validation{
+  &__validation {
     font-size: 9px;
     margin-bottom: 16px;
     color: $errorColor;
   }
-  &__tip{
+
+  &__tip {
     display: none;
     color: $blueColor;
     margin-bottom: 16px;
     font-size: 9px;
   }
-  input{
+
+  input {
     margin-top: 8px;
     border: none;
     outline: none;
     border-bottom: 1px solid $blueColor;
-
   }
 }

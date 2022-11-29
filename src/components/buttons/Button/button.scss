@@ -1,6 +1,6 @@
 @import "src/styles/variables";
 
-.button{
+.button {
   border: 0;
   background-color: $blueColor;
   color: $whiteColor;
@@ -9,7 +9,8 @@
   border-radius: 8px;
   font-size: 13px;
   text-align: center;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
   }
 }

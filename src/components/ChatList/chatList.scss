@@ -1,44 +1,54 @@
 @import "src/styles/variables";
 
-.chat-list{
+.chat-list {
   height: 100%;
   overflow-y: auto;
-  &::-webkit-scrollbar{
+
+  &::-webkit-scrollbar {
     display: none;
   }
-  &__item{
+
+  &__item {
     padding: 12px 10px;
     display: flex;
     border-bottom: 1px solid $backGroundGrayColor;
-    &:hover{
+
+    &:hover {
       cursor: pointer;
       background: $lightBlueColor;
     }
-    .image{
+
+    .image {
       min-width: 47px;
       height: 47px;
       border-radius: 50%;
       background-color: $backGroundGrayColor;
     }
-    .info{
+
+    .info {
       margin: 0 0 0 10px;
       width: 100%;
-      &__row{
+
+      &__row {
         display: flex;
         justify-content: space-between;
-        .title{
+
+        .title {
           font-size: 13px;
           font-weight: 600;
         }
-        .time{
+
+        .time {
           font-size: 9px;
-          color: $grayColor
+          color: $grayColor;
         }
       }
-      .subtitle{
+
+      .subtitle {
         display: flex;
         height: 30px;
-        .last-message{
+
+        .last-message {
           width: 100%;
           margin-right: 40px;
           color: $grayColor;
@@ -47,7 +57,8 @@
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
-        .badge{
+
+        .badge {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -57,12 +68,11 @@
           margin-top: auto;
           border-radius: 50%;
           background-color: $blueColor;
-          font-family: 'Inter';
+          font-family: Inter;
           font-size: 11px;
-          color:$whiteColor;
+          color: $whiteColor;
         }
       }
-
     }
   }
 }

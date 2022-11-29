@@ -9,7 +9,7 @@
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
     "stylelint": "stylelint \"src/**/*.scss\"",
-    "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
+    "stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
     "start": "npm run build && npm run server"
   },
   "repository": {

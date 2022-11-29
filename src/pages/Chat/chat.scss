@@ -1,29 +1,35 @@
 @import "src/styles/variables";
 
-.messenger{
+.messenger {
   display: flex;
   height: 100%;
   width: 100%;
-  &__left-column{
+
+  &__left-column {
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 310px;
     background: $backGroundLightGrayColor;
     border-right: 1px solid $backGroundGrayColor;
-    .profile{
+
+    .profile {
       text-align: right;
       margin: 20px 10px;
-      &__link{
+
+      &__link {
         color: $grayColor;
         font-size: 12px;
       }
     }
-    .search-field{
+
+    .search-field {
       border-bottom: 1px solid $backGroundGrayColor;
-      .text-input{
-        margin: 0 10px 15px 10px;
-        input{
+
+      .text-input {
+        margin: 0 10px 15px;
+
+        input {
           background-color: $backGroundGrayColor;
           border: 0;
           height: 32px;
@@ -31,44 +37,50 @@
           padding: 0 5px;
           margin: 0;
           font-size: 12px;
-          &::placeholder{
+
+          &::placeholder {
             color: $grayColor;
             text-align: center;
           }
         }
       }
     }
-
   }
-  &__right-column{
+
+  &__right-column {
     height: 100%;
     width: 100%;
-    .chat{
+
+    .chat {
       height: 100%;
       display: flex;
       flex-direction: column;
-      &__header{
+
+      &__header {
         display: flex;
         align-items: center;
-        margin: 0px 20px;
+        margin: 0 20px;
         padding: 10px 0;
         justify-content: space-between;
         border-bottom: 1px solid $backGroundGrayColor;
 
-        .chat-title{
+        .chat-title {
           display: flex;
           align-items: center;
-          &__avatar{
+
+          &__avatar {
             border-radius: 50%;
             border: none;
             background: $backGroundGrayColor;
           }
-          &__name{
+
+          &__name {
             margin-left: 10px;
             font-size: 13px;
             font-weight: 600;
           }
-          &__context-button{
+
+          &__context-button {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -77,34 +89,40 @@
             width: 25px;
             height: 25px;
             border-radius: 50%;
-            &:hover{
-              background: #F5F5F5;
+
+            &:hover {
+              background: #f5f5f5;
               cursor: pointer;
             }
-            img{
+
+            img {
               height: 15px;
             }
           }
         }
       }
-      &__bottom-panel{
+
+      &__bottom-panel {
         display: flex;
         align-items: center;
         border-top: 1px solid $backGroundGrayColor;
-        margin: 0px 20px;
+        margin: 0 20px;
         padding: 10px 0;
-        .clip-button{
+
+        .clip-button {
           background: $whiteColor;
           padding: 0;
           border: none;
           border-radius: 50%;
           width: 32px;
           height: 32px;
-          &:hover{
+
+          &:hover {
             cursor: pointer;
           }
         }
-        .send-button{
+
+        .send-button {
           display: flex;
           align-items: center;
           justify-content: center;
@@ -117,8 +135,6 @@
           rotate: 180deg;
         }
       }
-
     }
-
   }
 }
