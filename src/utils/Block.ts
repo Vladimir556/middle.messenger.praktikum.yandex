@@ -61,7 +61,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     const { events } = this.props as Props;
 
     if (!events || !this._element) {
-
+      return
     }
   }
 

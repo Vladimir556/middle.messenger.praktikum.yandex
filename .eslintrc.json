@@ -19,7 +19,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "max-len": [2, 100],
+        "eol-last": ["error", "always"],
         "max-params": [2, 3],
         "@typescript-eslint/no-unused-vars": 2
     }
