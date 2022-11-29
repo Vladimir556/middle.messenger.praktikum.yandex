@@ -63,6 +63,10 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     if (!events || !this._element) {
       return
     }
+
+    Object.keys(events).forEach((eventName) => {
+      this._element?.removeEventListener(eventName, events[eventName])
+    })
   }
 
   private _addEvents() {
@@ -79,14 +83,6 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
-
-  // private _createResources() {
-  //   const { tagName } = this._meta;
-  //   this._element = this._createDocumentElement(tagName);
-  //   if (this._meta.className){
-  //     this._element.className = this._meta.className
-  //   }
-  // }
 
   protected init() {}
 
