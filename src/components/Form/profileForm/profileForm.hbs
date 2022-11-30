@@ -1,0 +1,25 @@
+<form>
+  <div class="profile-container__userinfo">
+    {{#if isChangePassForm}}
+      {{{passwordOldInput}}}
+      {{{passwordInput}}}
+      {{{passwordRepeatInput}}}
+    {{else}}
+      {{{emailInput}}}
+      {{{loginInput}}}
+      {{{firstNameInput}}}
+      {{{secondNameInput}}}
+      {{{displayNameInput}}}
+      {{{phoneInput}}}
+    {{/if}}
+  </div>
+  <div class="profile-container__buttons">
+    {{#if isChangeForm}}
+      {{{saveButton}}}
+    {{else}}
+      {{{changeInfoLink}}}
+      {{{changePasswordLink}}}
+      {{{logOutLink}}}
+    {{/if}}
+  </div>
+</form>

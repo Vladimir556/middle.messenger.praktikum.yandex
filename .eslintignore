@@ -1,0 +1,9 @@
+/build
+**/*.min.js
+/node_modules
+/.idea
+/dist
+/.github
+/.parcel-cache
+/.vscode
+/server
