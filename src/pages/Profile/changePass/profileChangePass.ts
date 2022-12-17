@@ -4,8 +4,8 @@ import avatarSVG from '../../../static/avatar.svg';
 import * as styles from '../profile.scss';
 import { ProfileForm } from '../../../components/Form/profileForm/profileForm';
 import { BackButton } from '../../../components/buttons/BackButton/backButton';
-import { validateForm } from '../../../utils/validateForm';
-import { getFormData } from '../../../utils/getFormData';
+import { validateForm } from '../../../utils/validation/validateForm';
+import { getFormData } from '../../../utils/helpers/getFormData';
 
 export class ProfileChangePassPage extends Block {
   constructor() {

@@ -1,4 +1,4 @@
-import { validationValue } from '../constants/validation';
+import { validationValue } from '../../constants/validation';
 
 function blurOrSubmitValidate(name: string, value: string): string {
   const { regExp, errMessage } = validationValue[name];

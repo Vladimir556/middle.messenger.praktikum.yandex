@@ -6,7 +6,7 @@ import { MessageInput } from '../../components/inputs/MessageInput/messageInput'
 import arrowSVG from '../../static/arrow.svg';
 import clipSVG from '../../static/grayClip.svg';
 import contextMenuSVG from '../../static/contextMenu.svg';
-import { autoSizeTextArea } from '../../utils/autoSizeTextArea';
+import { autoSizeTextArea } from '../../utils/helpers/autoSizeTextArea';
 import { LabeledInput } from '../../components/inputs/Input/LabeledInput/labeledInput';
 import { ChatHistory } from '../../components/ChatHistory/chatHistory';
 

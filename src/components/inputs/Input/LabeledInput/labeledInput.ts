@@ -2,7 +2,7 @@ import Block from '../../../../utils/Block';
 import { Input } from '../input';
 import template from './labeledInput.hbs';
 import * as styles from './labeledInput.scss';
-import { validateInput } from '../../../../utils/validateInput';
+import { validateInput } from '../../../../utils/validation/validateInput';
 
 interface LabeledInputProps {
   labelText?: string,

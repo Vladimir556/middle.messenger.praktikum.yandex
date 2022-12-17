@@ -1,8 +1,8 @@
 import Block from '../../utils/Block';
 import template from './registration.hbs';
 import { RegistrationForm } from '../../components/Form/registrationForm/registrationForm';
-import { getFormData } from '../../utils/getFormData';
-import { validateForm } from '../../utils/validateForm';
+import { getFormData } from '../../utils/helpers/getFormData';
+import { validateForm } from '../../utils/validation/validateForm';
 
 export class RegistrationPage extends Block {
   constructor() {
