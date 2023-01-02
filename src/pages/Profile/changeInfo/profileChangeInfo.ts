@@ -25,7 +25,7 @@ export class ProfileChangeInfoPage extends Block {
     this.setProps({ styles, avatarSVG });
 
     this.children.backButton = new BackButton({
-      href: '/Profile',
+      href: '/profile',
     });
 
     this.children.profileForm = new ProfileForm({

@@ -13,7 +13,7 @@ export class AuthController {
   async signin(data: SigninData) {
     try {
       await this.api.signin(data);
-
+      console.log(data)
       router.go('/profile');
     } catch (e: any) {
       console.error(e);

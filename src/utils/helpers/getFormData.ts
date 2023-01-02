@@ -1,4 +1,6 @@
-export function getFormData(event: Event) {
+import {SigninData, SignupData} from "../../types/interfaces";
+
+export function getFormData(event: Event): Record<string, string> | SigninData | SignupData {
   const data = new FormData(event?.target as HTMLFormElement);
   const authFormData: Record<string, string> = {};
 
@@ -7,4 +9,5 @@ export function getFormData(event: Event) {
   });
 
   console.log(authFormData);
+  return authFormData;
 }

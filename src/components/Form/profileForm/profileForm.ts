@@ -117,7 +117,7 @@ export class ProfileForm extends Block {
 
     this.children.logOutLink = new Link({
       text: 'Выйти',
-      href: '/Auth/',
+      href: '/',
     });
 
     this.children.saveButton = new Button({

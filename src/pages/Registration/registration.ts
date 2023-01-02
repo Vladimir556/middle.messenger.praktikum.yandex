@@ -3,6 +3,8 @@ import template from './registration.hbs';
 import { RegistrationForm } from '../../components/Form/registrationForm/registrationForm';
 import { getFormData } from '../../utils/helpers/getFormData';
 import { validateForm } from '../../utils/validation/validateForm';
+import AuthController from "../../controllers/AuthController";
+import {SignupData} from "../../types/interfaces";
 
 export class RegistrationPage extends Block {
   constructor() {
@@ -14,8 +16,10 @@ export class RegistrationPage extends Block {
       events: {
         submit: (event) => {
           event!.preventDefault();
-          validateForm(event!);
-          getFormData(event!);
+          if (validateForm(event!)) {
+            const data = getFormData(event!);
+            AuthController.signup(data as SignupData)
+          }
         },
       },
     });

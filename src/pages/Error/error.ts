@@ -18,7 +18,7 @@ export class ErrorPage extends Block {
 
     this.children.backToChatsLink = new Link({
       text: 'Назад к чатам',
-      href: '/',
+      href: '/messenger',
     });
   }
 

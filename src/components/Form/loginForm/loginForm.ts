@@ -40,7 +40,7 @@ export class LoginForm extends Block {
 
     this.children.registerLink = new Link({
       text: 'Нет аккаунта?',
-      href: '/Registration',
+      href: '/sign-up',
     });
   }
 
