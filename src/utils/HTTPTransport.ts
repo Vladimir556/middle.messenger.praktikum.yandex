@@ -77,27 +77,24 @@ export default class HTTPTransport {
 
 		return new Promise((resolve, reject) => {
 			const xhr = new XMLHttpRequest();
-
-			xhr.open(method, url);
-
 			xhr.withCredentials = true;
 			xhr.responseType = 'json';
 			xhr.timeout = timeout;
+
+			xhr.open(method, url);
 
 			if (headers) {
 				Object.keys(headers).forEach((key) => {
 					xhr.setRequestHeader(key, headers[key]);
 				});
         xhr.send(data as FormData);
-			} else {
-				xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 			}
 
 			if (method === HTTPTransport.METHOD.GET || !data) {
 				xhr.send();
 			} else {
 				if (file) {
-          console.log(data);
+          console.log(data.get('avatar'));
           xhr.send(data as FormData)
         } else {
           xhr.send(JSON.stringify(data));

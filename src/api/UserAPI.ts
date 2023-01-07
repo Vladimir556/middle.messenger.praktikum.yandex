@@ -1,6 +1,5 @@
 import BaseAPI from './BaseAPI';
 import {
-	UpdateAvatarData,
 	UpdatePasswordData,
 	UpdateProfileData
 } from '../types/interfaces';
@@ -14,7 +13,7 @@ export class UserAPI extends BaseAPI {
 		return this.http.put('/profile', { data });
 	}
 
-	updateAvatar(data: UpdateAvatarData) {
+	updateAvatar(data: FormData) {
 		return this.http.put(
       '/profile/avatar',
       {

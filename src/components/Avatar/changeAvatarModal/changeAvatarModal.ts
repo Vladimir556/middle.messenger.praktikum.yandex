@@ -31,12 +31,10 @@ export class changeAvatarModal extends Block {
 
 	onSubmit(event: Event) {
 		event.preventDefault();
-    const avatarUpload = document.querySelector(
-      '#avatar-upload'
-    ) as HTMLInputElement;
 
     const data = new FormData()
-    data.append('file', avatarUpload!.files![0])
+    data.append('avatar', this.props.uploadAvatar)
+
 		if (data) {
 			userController.updateProfileAvatar(data);
 		}
@@ -49,7 +47,8 @@ export class changeAvatarModal extends Block {
 
 		if (avatarUpload) {
 			this.setProps({
-				imageName: avatarUpload!.files![0].name
+				imageName: avatarUpload!.files![0].name,
+        uploadAvatar: avatarUpload!.files![0]
 			});
 		}
 	}
