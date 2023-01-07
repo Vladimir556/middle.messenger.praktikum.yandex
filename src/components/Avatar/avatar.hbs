@@ -1,0 +1,17 @@
+<div>
+  <div class="profile-avatar">
+    <div class="avatar-mask">
+      <span class="avatar-mask__text">
+        Поменять
+        аватар
+      </span>
+    </div>
+
+    {{#if url}}
+      <img class="avatar-image" src="https://ya-praktikum.tech/api/v2/resources{{url}}" alt="avatar">
+    {{else}}
+      <img src="{{avatarSVG}}" alt="avatar-template">
+    {{/if}}
+  </div>
+  {{{changeAvatarModal}}}
+</div>

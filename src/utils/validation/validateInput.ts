@@ -55,10 +55,19 @@ export function validateInput(event: Event, inputName?: string, inputValue?: str
       tipMessage!.style.display = 'none';
 
       if (name === 'repeatPassword') {
+
         const passwordInput = document.querySelector('#password') as HTMLInputElement;
-        if (value !== passwordInput.value) {
-          result = validationValue[name].errMessage;
+        if (!passwordInput){
+          const newPassword = document.querySelector('#newPassword') as HTMLInputElement;
+          if (value !== newPassword.value) {
+            result = validationValue[name].errMessage;
+          }
+        } else {
+          if (value !== passwordInput.value) {
+            result = validationValue[name].errMessage;
+          }
         }
+
         errorMessage!.textContent = result;
         return !(result);
       }

@@ -2,21 +2,32 @@ import Block from '../../../utils/Block';
 import template from './backButton.hbs';
 import * as styles from './backButton.scss';
 import arrowSVG from '../../../static/arrow.svg';
+import {withRouter} from "../../../hocs/withRouter";
 
 interface BackButtonProps {
-  href: string
+	href: string;
+	events?: {
+		click: () => void;
+	};
 }
 
-export class BackButton extends Block {
-  constructor(props: BackButtonProps) {
-    super(props);
+export class BackButtonBase extends Block {
+	constructor(props: BackButtonProps) {
+		super({
+      ...props,
+      events: {
+        click: () => this.navigate()
+      }
+    });
+	}
+
+  navigate() {
+    this.props.router.go(this.props.href)
   }
 
-  protected init() {
-    this.setProps({ styles, arrowSVG });
-  }
-
-  protected render(): DocumentFragment {
-    return this.compile(template, this.props);
-  }
+	protected render(): DocumentFragment {
+		return this.compile(template, {...this.props, styles, arrowSVG});
+	}
 }
+
+export const BackButton = withRouter(BackButtonBase)

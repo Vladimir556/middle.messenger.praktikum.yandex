@@ -13,17 +13,15 @@ const queryStringify = (data: Record<string, unknown>): string => {
 
 type Options = {
 	method: keyof typeof HTTPTransport.METHOD;
-	data?: Record<string, any>;
+	data?: Record<string, any> | FormData;
 	headers?: Record<string, string>;
 	timeout?: number;
+  file?: boolean
 };
 
 type OptionsWithNoMethod = Omit<Options, 'method'>;
 
-type HTTPMethod = (
-	url: string,
-	options?: OptionsWithNoMethod
-) => Promise<any>;
+type HTTPMethod = (url: string, options?: OptionsWithNoMethod) => Promise<any>;
 
 export default class HTTPTransport {
 	static API_URL = 'https://ya-praktikum.tech/api/v2';
@@ -48,34 +46,34 @@ export default class HTTPTransport {
 
 	public get: HTTPMethod = (path = '/', options = {}) => {
 		if (options.data) {
-			path += queryStringify(options.data);
+			path += queryStringify(options.data as Record<string, string>);
 		}
-		return this.request( this.endpoint + path, {
+		return this.request(this.endpoint + path, {
 			...options,
 			method: HTTPTransport.METHOD.GET
 		});
 	};
 
 	public put: HTTPMethod = (path, options = {}) =>
-		this.request( this.endpoint + path, {
-      ...options,
-      method: HTTPTransport.METHOD.PUT
-    });
+		this.request(this.endpoint + path, {
+			...options,
+			method: HTTPTransport.METHOD.PUT
+		});
 
 	public post: HTTPMethod = (path, options = {}) =>
-		this.request( this.endpoint + path, {
-      ...options,
-      method: HTTPTransport.METHOD.POST
-    });
+		this.request(this.endpoint + path, {
+			...options,
+			method: HTTPTransport.METHOD.POST
+		});
 
 	public delete: HTTPMethod = (path, options = {}) =>
-		this.request( this.endpoint + path, {
-      ...options,
-      method: HTTPTransport.METHOD.DELETE
-    });
+		this.request(this.endpoint + path, {
+			...options,
+			method: HTTPTransport.METHOD.DELETE
+		});
 
 	public request = (url: string, options: Options): Promise<any> => {
-		const { headers, data, method, timeout = 5000 } = options;
+		const { headers, data, method, timeout = 5000, file } = options;
 
 		return new Promise((resolve, reject) => {
 			const xhr = new XMLHttpRequest();
@@ -83,12 +81,14 @@ export default class HTTPTransport {
 			xhr.open(method, url);
 
 			xhr.withCredentials = true;
+			xhr.responseType = 'json';
 			xhr.timeout = timeout;
 
 			if (headers) {
 				Object.keys(headers).forEach((key) => {
 					xhr.setRequestHeader(key, headers[key]);
 				});
+        xhr.send(data as FormData);
 			} else {
 				xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
 			}
@@ -96,7 +96,12 @@ export default class HTTPTransport {
 			if (method === HTTPTransport.METHOD.GET || !data) {
 				xhr.send();
 			} else {
-				xhr.send(JSON.stringify(data));
+				if (file) {
+          console.log(data);
+          xhr.send(data as FormData)
+        } else {
+          xhr.send(JSON.stringify(data));
+        }
 			}
 
 			xhr.onload = () => resolve(xhr.response);

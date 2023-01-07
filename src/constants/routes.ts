@@ -4,5 +4,6 @@ export enum Routes {
   Register = '/sign-up',
   Profile = '/profile',
   Settings = '/settings',
-  Messenger = '/messenger'
+  Messenger = '/messenger',
+  PasswordSettings = '/settings/password'
 }

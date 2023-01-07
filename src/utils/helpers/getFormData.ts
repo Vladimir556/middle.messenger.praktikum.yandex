@@ -1,6 +1,13 @@
-import {SigninData, SignupData} from "../../types/interfaces";
+import {SigninData, SignupData, UpdatePasswordData, UpdateProfileData} from "../../types/interfaces";
 
-export function getFormData(event: Event): Record<string, string> | SigninData | SignupData {
+type ValidatedFormData =
+  Record<string, string>
+  | SigninData
+  | SignupData
+  | UpdatePasswordData
+  | UpdateProfileData
+
+export function getFormData(event: Event): ValidatedFormData {
   const data = new FormData(event?.target as HTMLFormElement);
   const authFormData: Record<string, string> = {};
 

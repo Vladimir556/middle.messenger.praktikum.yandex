@@ -6,6 +6,7 @@ import {withRouter} from "../../../hocs/withRouter";
 interface LinkProps {
 	text: string;
 	href: string;
+  class?: string;
 	events?: {
 		click: () => void;
 	};

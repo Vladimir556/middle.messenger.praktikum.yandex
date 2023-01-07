@@ -8,7 +8,7 @@ type BlockEvents<P = any> = {
   'flow:render': [];
 };
 
-type Props<P extends Record<string, unknown> = any> = { events?: Record<string, () => void> } & P;
+export type Props<P extends Record<string, unknown> = any> = { events?: Record<string, () => void> } & P;
 
 export default abstract class Block<P extends Record<string, unknown> = any> {
   static EVENTS = {

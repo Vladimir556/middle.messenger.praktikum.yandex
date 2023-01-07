@@ -9,6 +9,8 @@ import contextMenuSVG from '../../static/contextMenu.svg';
 import { autoSizeTextArea } from '../../utils/helpers/autoSizeTextArea';
 import { LabeledInput } from '../../components/inputs/Input/LabeledInput/labeledInput';
 import { ChatHistory } from '../../components/ChatHistory/chatHistory';
+import {Link} from "../../components/buttons/Link/link";
+import {Routes} from "../../constants/routes";
 
 interface ChatPageProps {
   profileName: string,
@@ -21,9 +23,12 @@ export class ChatPage extends Block {
   }
 
   protected init() {
-    this.setProps({
-      styles, arrowSVG, clipSVG, contextMenuSVG,
-    });
+
+    this.children.profileLink= new Link({
+      text: 'Профиль >',
+      class: 'profile__link',
+      href: Routes.Profile
+    })
 
     this.children.input = new LabeledInput({
       type: 'text',
@@ -140,6 +145,6 @@ export class ChatPage extends Block {
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props);
+    return this.compile(template, {...this.props, styles, arrowSVG, clipSVG, contextMenuSVG});
   }
 }
