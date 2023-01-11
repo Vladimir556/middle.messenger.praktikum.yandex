@@ -1,22 +1,34 @@
 import Block from '../../../utils/Block';
 import template from './link.hbs';
 import * as styles from './link.scss';
+import { withRouter } from '../../../hocs/withRouter';
 
 interface LinkProps {
-  text: string
-  href: string
+  text: string;
+  href: string;
+  class?: string;
+  events?: {
+    click: () => void;
+  };
 }
 
-export class Link extends Block {
+class BaseLink extends Block {
   constructor(props: LinkProps) {
-    super(props);
+    super({
+      ...props,
+      events: {
+        click: () => this.navigate(),
+      },
+    });
   }
 
-  protected init() {
-    this.setProps({ styles });
+  navigate() {
+    this.props.router.go(this.props.href);
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props);
+    return this.compile(template, { ...this.props, styles });
   }
 }
+
+export const Link = withRouter(BaseLink);

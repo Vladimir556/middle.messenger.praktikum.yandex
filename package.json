@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "messenger app",
   "scripts": {
-    "dev": "parcel src/pages/index.html src/pages/Auth/index.html src/pages/Error/Error5/index.html src/pages/Error/Error404/index.html src/pages/Profile/index.html src/pages/Registration/index.html src/pages/Profile/changeInfo/index.html src/pages/Profile/changePass/index.html --port 3000 --no-cache --open",
+    "dev": "parcel ./src/index.html --port 3000 --no-cache --open",
     "server": "node ./server/index.js",
-    "build": "parcel build src/pages/index.html src/pages/Auth/index.html src/pages/Error/Error5/index.html src/pages/Error/Error404/index.html src/pages/Profile/index.html src/pages/Registration/index.html src/pages/Profile/changeInfo/index.html src/pages/Profile/changePass/index.html",
+    "build": "parcel build src/index.html",
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
     "stylelint": "stylelint \"src/**/*.scss\"",
@@ -46,7 +46,7 @@
     "stylelint": "14.15.0",
     "stylelint-config-standard": "29.0.0",
     "stylelint-scss": "4.3.0",
-    "typescript": "4.8.4"
+    "typescript": "4.9.4"
   },
   "browserslist": {
     "production": [

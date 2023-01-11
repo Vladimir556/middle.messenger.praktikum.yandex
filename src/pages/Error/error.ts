@@ -14,15 +14,13 @@ export class ErrorPage extends Block {
   }
 
   protected init() {
-    this.setProps({ styles });
-
     this.children.backToChatsLink = new Link({
       text: 'Назад к чатам',
-      href: '/',
+      href: '/messenger',
     });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props);
+    return this.compile(template, { ...this.props, styles });
   }
 }

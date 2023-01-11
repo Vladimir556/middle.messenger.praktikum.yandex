@@ -18,6 +18,7 @@
       margin: 20px 10px;
 
       &__link {
+        cursor: pointer;
         color: $grayColor;
         font-size: 12px;
       }
@@ -72,6 +73,7 @@
             border-radius: 50%;
             border: none;
             background: $backGroundGrayColor;
+            object-fit: cover;
           }
 
           &__name {
@@ -137,4 +139,8 @@
       }
     }
   }
+}
+
+.test {
+  position: relative;
 }

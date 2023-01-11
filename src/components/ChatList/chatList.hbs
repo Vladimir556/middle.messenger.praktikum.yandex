@@ -1,21 +1,25 @@
 <ul class="chat-list">
   {{#each chats }}
     <li class="chat-list__item">
+      <div class='selector' data-id="{{this.id}}" data-title="{{this.title}}" data-avatar="{{this.avatar}}"></div>
       <div class="image">
-        {{#if this.imgUrl}}
-          <img class="image" src="{{this.imgUrl}}" width="47" height="47">
+        {{#if this.avatar}}
+          <img class="image" src="https://ya-praktikum.tech/api/v2/resources{{this.avatar}}" width="47" height="47">
         {{/if}}
       </div>
       <div class="info">
         <div class="info__row">
-          <p class="title">{{ this.name}}</p>
-          <p class="time">{{this.time}}</p>
+          <p class="title">{{this.title}}</p>
+<!--          <p class="time">{{this.last_message.time}}</p>-->
         </div>
         <div class="subtitle">
-          <p class="last-message">{{this.lastMessage}}</p>
-          {{#if this.unreadCount}}
-            <div class="badge">{{this.unreadCount}}</div>
-          {{/if}}
+          <p class="last-message">{{this.last_message.content}}</p>
+            <div
+              class="badge"
+              {{#unless this.unread_count}}
+                style='display: none'
+              {{/unless}}
+            >{{this.unread_count}}</div>
         </div>
       </div>
     </li>
