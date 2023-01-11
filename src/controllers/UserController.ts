@@ -1,5 +1,5 @@
 import API, { UserAPI } from '../api/UserAPI';
-import { UpdatePasswordData, UpdateProfileData } from '../types/interfaces';
+import { UpdatePasswordData, UpdateProfileData, UserInfo, UserSearchData } from '../types/interfaces';
 import store from '../utils/Store';
 
 export class UserController {
@@ -20,7 +20,8 @@ export class UserController {
 
 	async updateProfileAvatar(data: FormData) {
 		try {
-			await this.api.updateAvatar(data);
+			const updatedUser = await this.api.updateAvatar(data);
+      store.set('user', updatedUser)
 		} catch (e: any) {
 			console.error(e);
 		}
@@ -33,6 +34,15 @@ export class UserController {
 			console.error(e);
 		}
 	}
+
+  async searchUser(data: UserSearchData) {
+    try {
+      const searchUsersData = await this.api.search(data);
+      return searchUsersData as [UserInfo]
+    } catch (e: any) {
+      console.error(e);
+    }
+  }
 
 	// async user(data: { id: number}) {
 	//   try {

@@ -54,6 +54,7 @@ class Router {
 	private routes: Route[] = [];
 	private currentRoute: Route | null = null;
 	private history = window.history;
+  private location = window.location;
 
 	constructor(private readonly rootQuery: string) {
 		if (Router.__instance) {
@@ -115,6 +116,10 @@ class Router {
 	private getRoute(pathname: string) {
 		return this.routes.find((route) => route.match(pathname));
 	}
+
+  public getHash(): string {
+    return this.location.hash.slice(1)
+  }
 }
 
 export default new Router('#app');

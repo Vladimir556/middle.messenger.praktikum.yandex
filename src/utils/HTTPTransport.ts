@@ -83,18 +83,32 @@ export default class HTTPTransport {
 
 			xhr.open(method, url);
 
+      xhr.onreadystatechange = () => {
+
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status < 400) {
+            resolve(xhr.response);
+          } else {
+            reject(xhr.response);
+          }
+        }
+      };
+
 			if (headers) {
 				Object.keys(headers).forEach((key) => {
 					xhr.setRequestHeader(key, headers[key]);
 				});
         xhr.send(data as FormData);
+			} else {
+				if (!file) {
+          xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        }
 			}
 
 			if (method === HTTPTransport.METHOD.GET || !data) {
 				xhr.send();
 			} else {
 				if (file) {
-          console.log(data.get('avatar'));
           xhr.send(data as FormData)
         } else {
           xhr.send(JSON.stringify(data));

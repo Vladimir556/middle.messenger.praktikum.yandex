@@ -1,150 +1,159 @@
+// base
 import Block from '../../utils/Block';
 import template from './chat.hbs';
+
+// styles
 import * as styles from './chat.scss';
-import { ChatList } from '../../components/ChatList/chatList';
-import { MessageInput } from '../../components/inputs/MessageInput/messageInput';
+
+// assets
 import arrowSVG from '../../static/arrow.svg';
 import clipSVG from '../../static/grayClip.svg';
 import contextMenuSVG from '../../static/contextMenu.svg';
-import { autoSizeTextArea } from '../../utils/helpers/autoSizeTextArea';
+
+// components
+import { ChatList, ChatListProp } from '../../components/ChatList/chatList';
+import { MessageInput } from '../../components/inputs/MessageInput/messageInput';
 import { LabeledInput } from '../../components/inputs/Input/LabeledInput/labeledInput';
 import { ChatHistory } from '../../components/ChatHistory/chatHistory';
-import {Link} from "../../components/buttons/Link/link";
-import {Routes} from "../../constants/routes";
+import { Link } from '../../components/buttons/Link/link';
 
-interface ChatPageProps {
-  profileName: string,
-  profileImgUrl: string
+// utils
+import { Routes } from '../../constants/routes';
+import { autoSizeTextArea } from '../../utils/helpers/autoSizeTextArea';
+
+// controllers
+import ChatController from '../../controllers/ChatController';
+import userController from '../../controllers/UserController';
+import AuthController from '../../controllers/AuthController';
+
+// hocs
+import { withStore } from '../../utils/Store';
+import router from '../../utils/Router';
+
+export class ChatPageBase extends Block {
+	createChatHandler(event: Event) {
+		const element = event.target as HTMLElement;
+		const { title, id } = element.dataset;
+		console.log(title, id);
+
+		ChatController.createChat({ title: title as string }).then(() => {
+			this.updateChatListHandler();
+		});
+	}
+
+	openChatHandler(event: Event) {
+		const element = event.target as HTMLElement;
+		const { title, id, avatar } = element.dataset;
+
+		ChatController.selectChat({
+			title: title as string,
+			avatar: avatar as string,
+			chatId: Number(id)
+		}).then(() => {
+			this.children.chatHistory.setProps({
+				userId: this.props.user.id,
+				chatId: Number(id)
+			});
+      router.go(Routes.Messenger + `#${id}`)
+		});
+	}
+
+	searchUserHandler(event: InputEvent) {
+		const searchQuerry = (event.target as HTMLInputElement).value;
+		if (searchQuerry) {
+			userController.searchUser({ login: searchQuerry }).then((data) => {
+				if (data) {
+					const result: ChatListProp[] = [];
+
+					data?.map((user) => {
+						result.push({
+							id: user.id,
+							title: user.login,
+							avatar: user.avatar
+						});
+					});
+
+					this.children.chatList.setProps({
+						chats: [...result],
+						events: {
+							click: (event: Event) => this.createChatHandler(event)
+						}
+					});
+				}
+			});
+		} else {
+			this.updateChatListHandler();
+		}
+	}
+
+	protected init() {
+		this.children.profileLink = new Link({
+			text: 'Профиль >',
+			class: 'profile__link',
+			href: Routes.Profile
+		});
+
+		// search input
+		this.children.input = new LabeledInput({
+			type: 'text',
+			name: 'search',
+			id: 'search',
+			placeholder: 'Поиск',
+			events: {
+				input: (event) => this.searchUserHandler(event as InputEvent)
+			}
+		});
+
+		this.children.chatList = new ChatList({
+			events: {
+				click: (event) => this.openChatHandler(event)
+			}
+		});
+
+		this.children.chatHistory = new ChatHistory({});
+
+		this.children.messageInput = new MessageInput({
+			name: 'message',
+			id: 'message',
+			placeholder: 'Сообщение',
+			events: {
+				input: (event) => autoSizeTextArea(event!)
+			}
+		});
+
+		this.updateChatListHandler();
+	}
+
+	updateChatListHandler() {
+		AuthController.fetchUser();
+
+		ChatController.fetchChats().then(() => {
+			// refresh chatList
+			this.children.chatList.setProps({
+				chats: this.props.chats,
+				events: {
+					click: (event: Event) => this.openChatHandler(event)
+				}
+			});
+
+			// clear search input
+			this.children.input.setProps({
+				value: ''
+			});
+		});
+	}
+
+	protected render(): DocumentFragment {
+		return this.compile(template, {
+			...this.props,
+			styles,
+			arrowSVG,
+			clipSVG,
+			contextMenuSVG
+		});
+	}
 }
 
-export class ChatPage extends Block {
-  constructor(props: ChatPageProps) {
-    super(props);
-  }
+const withChats = withStore((state) => ({ ...state.chats, user: { ...state.user } }));
 
-  protected init() {
-
-    this.children.profileLink= new Link({
-      text: 'Профиль >',
-      class: 'profile__link',
-      href: Routes.Profile
-    })
-
-    this.children.input = new LabeledInput({
-      type: 'text',
-      name: 'search',
-      id: 'search',
-      placeholder: 'Поиск',
-    });
-
-    this.children.chatList = new ChatList({
-      chats: [
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Привет',
-          unreadCount: '10',
-        },
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
-          unreadCount: '10',
-        },
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
-          unreadCount: '10',
-        },
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
-          unreadCount: '10',
-        },
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
-          unreadCount: '10',
-        },
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
-          unreadCount: '10',
-        },
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
-          unreadCount: '10',
-        },
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
-          unreadCount: '10',
-        },
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
-          unreadCount: '10',
-        },
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
-          unreadCount: '10',
-        },
-        {
-          name: 'Tom',
-          time: '10:30',
-          lastMessage: 'Я помню чудное мгновенье: Передо мной явилась ты, Как мимолетное виденье, Как гений чистой красоты.',
-          unreadCount: '10',
-        },
-      ],
-    });
-
-    this.children.chatHistory = new ChatHistory({
-      messages: [
-        {
-          type: 'send',
-          text: 'Хорошо',
-          time: '10:20',
-        },
-        {
-          type: 'received',
-          text: 'как дела?',
-          time: '10:19',
-        },
-        {
-          type: 'send',
-          text: 'Привет',
-          time: '10:18',
-        },
-        {
-          type: 'received',
-          text: 'Привет',
-          time: '10:18',
-        },
-
-      ],
-    });
-
-    this.children.messageInput = new MessageInput({
-      name: 'message',
-      id: 'message',
-      placeholder: 'Сообщение',
-      events: {
-        input: (event) => autoSizeTextArea(event!),
-      },
-    });
-  }
-
-  protected render(): DocumentFragment {
-    return this.compile(template, {...this.props, styles, arrowSVG, clipSVG, contextMenuSVG});
-  }
-}
+export const ChatPage = withChats(ChatPageBase);

@@ -32,12 +32,11 @@ export class changeAvatarModal extends Block {
 	onSubmit(event: Event) {
 		event.preventDefault();
 
-    const data = new FormData()
-    data.append('avatar', this.props.uploadAvatar)
-
-		if (data) {
-			userController.updateProfileAvatar(data);
-		}
+    if (this.props.uploadAvatar) {
+      const data = new FormData()
+      data.append('avatar', this.props.uploadAvatar)
+      userController.updateProfileAvatar(data);
+    }
 	}
 
 	onChange() {
