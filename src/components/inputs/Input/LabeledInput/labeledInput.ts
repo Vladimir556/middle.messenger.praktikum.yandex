@@ -43,7 +43,7 @@ export class LabeledInput extends Block {
 		newProps: LabeledInputProps
 	): boolean {
 
-		this.children.input.setProps({
+    (this.children.input as Block).setProps({
 			value: newProps.value
 		});
 

@@ -26,12 +26,8 @@ class BaseLink extends Block {
 		this.props.router.go(this.props.href);
 	}
 
-	protected init() {
-		this.setProps({ styles });
-	}
-
 	protected render(): DocumentFragment {
-		return this.compile(template, this.props);
+		return this.compile(template, { ...this.props, styles });
 	}
 }
 

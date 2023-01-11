@@ -39,14 +39,14 @@ export class Avatar extends Block {
     // открытие модального окна изменения аватара
     if ((event.target as Element).className === 'avatar-mask'
       || (event.target as Element).className === 'avatar-mask__text') {
-      this.children.changeAvatarModal.setProps({
+      (this.children.changeAvatarModal as Block).setProps({
         changeModalActive: true
       });
     }
 
     // закрытие модального окна
     if ((event.target as Element).className === 'modal') {
-      this.children.changeAvatarModal.setProps({
+      (this.children.changeAvatarModal as Block).setProps({
         changeModalActive: false,
         imageName: null
       });

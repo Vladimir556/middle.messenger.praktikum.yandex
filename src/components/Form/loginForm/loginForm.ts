@@ -17,8 +17,6 @@ export class LoginForm extends Block {
   }
 
   protected init() {
-    this.setProps({ styles });
-
     this.children.loginInput = new LabeledInput({
       type: 'text',
       name: 'login',
@@ -45,6 +43,6 @@ export class LoginForm extends Block {
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props);
+    return this.compile(template, { ...this.props, styles });
   }
 }
