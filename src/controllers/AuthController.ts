@@ -1,7 +1,7 @@
 import API, { AuthAPI } from '../api/AuthAPI';
 import store from '../utils/Store';
 import router from '../utils/Router';
-import {SigninData, SignupData} from "../types/interfaces";
+import { SigninData, SignupData } from '../types/interfaces';
 
 export class AuthController {
   private readonly api: AuthAPI;
@@ -38,7 +38,7 @@ export class AuthController {
       store.set('user', user);
     } catch (e: any) {
       console.error(e.message);
-      router.go('/')
+      router.go('/');
     }
   }
 

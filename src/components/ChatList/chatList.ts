@@ -28,11 +28,11 @@ export interface ChatListProps {
 }
 
 export class ChatList extends Block {
-	constructor(props?: ChatListProps) {
-		super(props);
-	}
+  constructor(props?: ChatListProps) {
+    super(props);
+  }
 
-	protected render(): DocumentFragment {
-		return this.compile(template, { ...this.props, styles });
-	}
+  protected render(): DocumentFragment {
+    return this.compile(template, { ...this.props, styles });
+  }
 }

@@ -1,11 +1,13 @@
-import {SigninData, SignupData, UpdatePasswordData, UpdateProfileData} from "../../types/interfaces";
+import {
+  SigninData, SignupData, UpdatePasswordData, UpdateProfileData,
+} from '../../types/interfaces';
 
 type ValidatedFormData =
   Record<string, string>
   | SigninData
   | SignupData
   | UpdatePasswordData
-  | UpdateProfileData
+  | UpdateProfileData;
 
 export function getFormData(event: Event): ValidatedFormData {
   const data = new FormData(event?.target as HTMLFormElement);

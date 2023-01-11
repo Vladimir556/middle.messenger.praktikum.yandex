@@ -5,9 +5,9 @@ export function validateForm(event: Event):boolean {
   let result: boolean = true;
 
   data.forEach((value, name) => {
-    let validationResult = validateInput(event, name, value as string);
+    const validationResult = validateInput(event, name, value as string);
     if (result) {
-      result = validationResult
+      result = validationResult;
     }
   });
   return result;

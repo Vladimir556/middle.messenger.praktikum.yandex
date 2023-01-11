@@ -20,7 +20,7 @@ export const validationValue: Record<string, { regExp?: RegExp, message: string,
   display_name: {
     regExp: /.*/,
     message: 'Имя, которое будет отображаться в чате',
-    errMessage: ''
+    errMessage: '',
   },
   second_name: {
     regExp: /(^[А-ЯЁ]{1}[а-яё-]+)|(^[A-Z]{1}[a-z-]+)/u,

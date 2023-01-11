@@ -1,13 +1,11 @@
 import Router from './utils/Router';
-import {AuthPage} from "./pages/Auth/auth";
-import {RegistrationPage} from "./pages/Registration/registration";
-import {ProfilePage} from "./pages/Profile/profile";
-import {ChatPage} from "./pages/Chat/chat";
-import {Routes} from "./constants/routes";
+import { AuthPage } from './pages/Auth/auth';
+import { RegistrationPage } from './pages/Registration/registration';
+import { ProfilePage } from './pages/Profile/profile';
+import { ChatPage } from './pages/Chat/chat';
+import { Routes } from './constants/routes';
 // import AuthController from "./controllers/AuthController";
 // import store from './utils/Store';
-
-
 
 window.addEventListener('DOMContentLoaded', async () => {
   Router
@@ -15,8 +13,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Register, RegistrationPage)
     .use(Routes.Profile, ProfilePage)
     .use(Routes.Messenger, ChatPage)
-    .start()
-
+    .start();
 
   // let isProtectedRoute = true;
   //
@@ -42,6 +39,4 @@ window.addEventListener('DOMContentLoaded', async () => {
   //     Router.go(Routes.Index);
   //   }
   // }
-
 });
-

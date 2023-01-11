@@ -9,7 +9,6 @@ import * as styles from './avatar.scss';
 import avatarSVG from '../../static/avatar.svg';
 import { changeAvatarModal } from './changeAvatarModal/changeAvatarModal';
 
-
 interface AvatarProps {
   url: string;
   changeModalActive?: boolean;
@@ -24,14 +23,14 @@ export class Avatar extends Block {
       ...props,
       changeModalActive: false,
       events: {
-        click: (event: Event) => this.setChangeModalActive(event)
-      }
+        click: (event: Event) => this.setChangeModalActive(event),
+      },
     });
   }
 
   protected init() {
     this.children.changeAvatarModal = new changeAvatarModal({
-      changeModalActive: false
+      changeModalActive: false,
     });
   }
 
@@ -40,7 +39,7 @@ export class Avatar extends Block {
     if ((event.target as Element).className === 'avatar-mask'
       || (event.target as Element).className === 'avatar-mask__text') {
       (this.children.changeAvatarModal as Block).setProps({
-        changeModalActive: true
+        changeModalActive: true,
       });
     }
 
@@ -48,7 +47,7 @@ export class Avatar extends Block {
     if ((event.target as Element).className === 'modal') {
       (this.children.changeAvatarModal as Block).setProps({
         changeModalActive: false,
-        imageName: null
+        imageName: null,
       });
     }
   }

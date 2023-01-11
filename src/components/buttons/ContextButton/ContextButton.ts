@@ -13,7 +13,7 @@ interface ContextButtonProps {
 export class ContextButton extends Block {
   constructor(props?: ContextButtonProps) {
     super({
-      ...props
+      ...props,
     });
   }
 
@@ -22,6 +22,6 @@ export class ContextButton extends Block {
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, {...this.props, styles})
+    return this.compile(template, { ...this.props, styles });
   }
 }

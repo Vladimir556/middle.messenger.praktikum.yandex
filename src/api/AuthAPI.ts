@@ -1,5 +1,5 @@
 import BaseAPI from './BaseAPI';
-import {SigninData, SignupData, User} from "../types/interfaces";
+import { SigninData, SignupData, User } from '../types/interfaces';
 
 export class AuthAPI extends BaseAPI {
   constructor() {
@@ -9,7 +9,6 @@ export class AuthAPI extends BaseAPI {
   signin(data: SigninData) {
     return this.http.post('/signin', { data });
   }
-
 
   signup(data: SignupData) {
     return this.http.post('/signup', { data });
@@ -24,7 +23,9 @@ export class AuthAPI extends BaseAPI {
   }
 
   create = undefined;
+
   update = undefined;
+
   delete = undefined;
 }
 

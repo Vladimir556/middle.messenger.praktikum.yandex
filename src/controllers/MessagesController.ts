@@ -42,11 +42,11 @@ class MessagesController {
       throw new Error(`Chat ${id} is not connected`);
     }
 
-    socket.send({type: 'get old', content: '0'});
+    socket.send({ type: 'get old', content: '0' });
   }
 
   closeAll() {
-    Array.from(this.sockets.values()).forEach(socket => socket.close());
+    Array.from(this.sockets.values()).forEach((socket) => socket.close());
   }
 
   private onMessage(id: number, messages: Message | Message[]) {

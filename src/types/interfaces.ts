@@ -1,56 +1,56 @@
 export interface SigninData {
-	login: string;
-	password: string;
+  login: string;
+  password: string;
 }
 
 export interface SignupData {
-	first_name: string;
-	second_name: string;
-	login: string;
-	email: string;
-	password: string;
-	phone: string;
+  first_name: string;
+  second_name: string;
+  login: string;
+  email: string;
+  password: string;
+  phone: string;
 }
 
 export interface User {
-	id: number;
-	first_name: string;
-	second_name: string;
-	display_name?: string;
-	login: string;
-	email: string;
-	password: string;
-	phone: string;
-	avatar: string;
+  id: number;
+  first_name: string;
+  second_name: string;
+  display_name?: string;
+  login: string;
+  email: string;
+  password: string;
+  phone: string;
+  avatar: string;
 }
 
 export interface UserInfo {
   id?: number;
-	first_name: string;
-	second_name: string;
+  first_name: string;
+  second_name: string;
   display_name?: string;
-	login: string;
-	email: string;
-	phone: string;
-	avatar: string;
+  login: string;
+  email: string;
+  phone: string;
+  avatar: string;
 }
 
 export interface UpdateProfileData {
-	first_name: string;
-	second_name: string;
-	display_name: string;
-	login: string;
-	email: string;
-	phone: string;
+  first_name: string;
+  second_name: string;
+  display_name: string;
+  login: string;
+  email: string;
+  phone: string;
 }
 
 export interface UpdateAvatarData {
-	avatar: FormData;
+  avatar: FormData;
 }
 
 export interface UpdatePasswordData {
-	oldPassword: string;
-	newPassword: string;
+  oldPassword: string;
+  newPassword: string;
 }
 
 export interface UserSearchData {
@@ -58,16 +58,16 @@ export interface UserSearchData {
 }
 
 export interface ChatsData {
-	title: string;
+  title: string;
 }
 
 export interface DeleteChatData {
-	chatId: number;
+  chatId: number;
 }
 
 export interface ChatsUsersData {
-	users: [number];
-	chatId: number;
+  users: [number];
+  chatId: number;
 }
 
 export interface ChatTokenData {

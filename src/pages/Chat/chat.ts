@@ -59,13 +59,13 @@ export class ChatPageBase extends Block {
     ChatController.selectChat({
       title: title as string,
       avatar: avatar as string,
-      id: Number(id)
+      id: Number(id),
     }).then(() => {
       (this.children.chatHistory as Block).setProps({
         userId: this.props.user.id,
-        id: Number(id)
+        id: Number(id),
       });
-      router.go(Routes.Messenger + `#${id}`);
+      router.go(`${Routes.Messenger}#${id}`);
     });
   }
 
@@ -80,15 +80,15 @@ export class ChatPageBase extends Block {
             result.push({
               id: user.id,
               title: user.login,
-              avatar: user.avatar
+              avatar: user.avatar,
             });
           });
 
           (this.children.chatList as Block).setProps({
             chats: [...result],
             events: {
-              click: (event: Event) => this.createChatHandler(event)
-            }
+              click: (event: Event) => this.createChatHandler(event),
+            },
           });
         }
       });
@@ -101,7 +101,7 @@ export class ChatPageBase extends Block {
     this.children.profileLink = new Link({
       text: 'Профиль >',
       class: 'profile__link',
-      href: Routes.Profile
+      href: Routes.Profile,
     });
 
     // search input
@@ -111,31 +111,31 @@ export class ChatPageBase extends Block {
       id: 'search',
       placeholder: 'Поиск',
       events: {
-        input: (event) => this.searchUserHandler(event as InputEvent)
-      }
+        input: (event) => this.searchUserHandler(event as InputEvent),
+      },
     });
 
     this.children.chatList = new ChatList({
       events: {
-        click: (event) => this.openChatHandler(event)
-      }
+        click: (event) => this.openChatHandler(event),
+      },
     });
 
     this.children.contextMunuChatSettings = new ContextMenu({
       items: [
         {
           img: addUserSVG,
-          text: 'Добавить пользователя'
+          text: 'Добавить пользователя',
         },
         {
           img: delUserSVG,
-          text: 'Удалить пользователя'
+          text: 'Удалить пользователя',
         },
         {
           img: delChatSVG,
-          text: 'Удалить чат'
-        }
-      ]
+          text: 'Удалить чат',
+        },
+      ],
     });
 
     this.children.contextButtonMenu = new ContextButton({
@@ -147,27 +147,27 @@ export class ChatPageBase extends Block {
           (this.children.contextMunuChatSettings as Block).setProps({
             positionX: (event?.currentTarget as HTMLElement).getClientRects()[0].x - 200,
             positionY: (event?.currentTarget as HTMLElement).getClientRects()[0].y + 25,
-            active: true
-          })
-        }
-      }
+            active: true,
+          });
+        },
+      },
     });
 
     this.children.contextMunuMessage = new ContextMenu({
       items: [
         {
           img: photoVideoSVG,
-          text: 'Фото или Видео'
+          text: 'Фото или Видео',
         },
         {
           img: fileSVG,
-          text: 'Файл'
+          text: 'Файл',
         },
         {
           img: locationSVG,
-          text: 'Локация'
-        }
-      ]
+          text: 'Локация',
+        },
+      ],
     });
 
     this.children.clipButton = new ContextButton({
@@ -179,12 +179,11 @@ export class ChatPageBase extends Block {
           (this.children.contextMunuMessage as Block).setProps({
             positionX: (event?.currentTarget as HTMLElement).getClientRects()[0].x,
             positionY: (event?.currentTarget as HTMLElement).getClientRects()[0].y - 150,
-            active: true
-          })
-        }
-      }
+            active: true,
+          });
+        },
+      },
     });
-
 
     this.children.sendMsgButton = new ContextButton({
       img: arrowSVG,
@@ -192,10 +191,10 @@ export class ChatPageBase extends Block {
 
       events: {
         click: (event) => {
-          const message: HTMLTextAreaElement = document.querySelector(`#message`) as HTMLTextAreaElement
-          MessagesController.sendMessage(this.props.current.id, message.value)
-        }
-      }
+          const message: HTMLTextAreaElement = document.querySelector('#message') as HTMLTextAreaElement;
+          MessagesController.sendMessage(this.props.current.id, message.value);
+        },
+      },
     });
 
     this.children.chatHistory = new ChatHistory({});
@@ -205,8 +204,8 @@ export class ChatPageBase extends Block {
       id: 'message',
       placeholder: 'Сообщение',
       events: {
-        input: (event) => autoSizeTextArea(event!)
-      }
+        input: (event) => autoSizeTextArea(event!),
+      },
     });
 
     this.updateChatListHandler();
@@ -220,13 +219,13 @@ export class ChatPageBase extends Block {
       (this.children.chatList as Block).setProps({
         chats: this.props.chats,
         events: {
-          click: (event: Event) => this.openChatHandler(event)
-        }
+          click: (event: Event) => this.openChatHandler(event),
+        },
       });
 
       // clear search input
       (this.children.input as Block).setProps({
-        value: ''
+        value: '',
       });
     });
   }
@@ -237,7 +236,7 @@ export class ChatPageBase extends Block {
       styles,
       arrowSVG,
       clipSVG,
-      contextMenuSVG
+      contextMenuSVG,
     });
   }
 }

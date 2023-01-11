@@ -3,8 +3,8 @@ import template from './auth.hbs';
 import { LoginForm } from '../../components/Form/loginForm/loginForm';
 import { validateForm } from '../../utils/validation/validateForm';
 import { getFormData } from '../../utils/helpers/getFormData';
-import AuthController from "../../controllers/AuthController";
-import {SigninData} from "../../types/interfaces";
+import AuthController from '../../controllers/AuthController';
+import { SigninData } from '../../types/interfaces';
 
 export class AuthPage extends Block {
   constructor() {
@@ -17,8 +17,8 @@ export class AuthPage extends Block {
         submit: (event) => {
           event!.preventDefault();
           if (validateForm(event!)) {
-            const data = getFormData(event!)
-            AuthController.signin(data as SigninData)
+            const data = getFormData(event!);
+            AuthController.signin(data as SigninData);
           }
         },
       },

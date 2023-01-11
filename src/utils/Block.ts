@@ -95,14 +95,13 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach(child => {
+    Object.values(this.children).forEach((child) => {
       if (Array.isArray(child)) {
-        child.forEach(ch => ch.dispatchComponentDidMount());
+        child.forEach((ch) => ch.dispatchComponentDidMount());
       } else {
         child.dispatchComponentDidMount();
       }
     });
-
   }
 
   private _componentDidUpdate(oldProps: Props<P>, newProps: Props<P>) {
@@ -152,7 +151,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
 
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
-        contextAndStubs[name] = component.map(child => `<div data-id="${child.id}"></div>`)
+        contextAndStubs[name] = component.map((child) => `<div data-id="${child.id}"></div>`);
       } else {
         contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
       }
@@ -174,7 +173,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
       component.getContent()?.append(...Array.from(stub.childNodes));
 
       stub.replaceWith(component.getContent()!);
-    }
+    };
 
     Object.entries(this.children).forEach(([_, component]) => {
       if (Array.isArray(component)) {

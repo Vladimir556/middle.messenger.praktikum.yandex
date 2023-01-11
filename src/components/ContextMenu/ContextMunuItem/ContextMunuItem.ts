@@ -14,11 +14,11 @@ export interface ContextMunuItemProps {
 export class ContextMunuItem extends Block {
   constructor(props: ContextMunuItemProps) {
     super({
-      ...props
+      ...props,
     });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, {...this.props, styles})
+    return this.compile(template, { ...this.props, styles });
   }
 }
