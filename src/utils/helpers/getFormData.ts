@@ -17,6 +17,5 @@ export function getFormData(event: Event): ValidatedFormData {
     authFormData[key] = value as string;
   });
 
-  console.log(authFormData);
   return authFormData;
 }

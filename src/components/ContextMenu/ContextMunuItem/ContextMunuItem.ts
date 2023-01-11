@@ -2,7 +2,7 @@ import Block from '../../../utils/Block';
 import template from './ContextMenuItem.hbs';
 import * as styles from './ContextMenuItem.scss';
 
-export interface ContextMunuItemProps {
+export interface ContextMenuItemProps {
   img: any,
   text: string
 
@@ -12,7 +12,7 @@ export interface ContextMunuItemProps {
 }
 
 export class ContextMunuItem extends Block {
-  constructor(props: ContextMunuItemProps) {
+  constructor(props: ContextMenuItemProps) {
     super({
       ...props,
     });

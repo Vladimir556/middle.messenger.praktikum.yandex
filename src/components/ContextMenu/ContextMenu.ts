@@ -1,10 +1,10 @@
 import Block from '../../utils/Block';
 import template from './ContextMenu.hbs';
 import * as styles from './ContextMenu.scss';
-import { ContextMunuItem, ContextMunuItemProps } from './ContextMunuItem/ContextMunuItem';
+import { ContextMunuItem, ContextMenuItemProps } from './ContextMunuItem/ContextMunuItem';
 
 interface ContextMenuProps {
-  items: ContextMunuItemProps[];
+  items: ContextMenuItemProps[];
   positionX?: number;
   positionY?: number;
   active?: boolean;

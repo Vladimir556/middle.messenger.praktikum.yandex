@@ -8,7 +8,9 @@ type BlockEvents<P = any> = {
   'flow:render': [];
 };
 
-export type Props<P extends Record<string, unknown> = any> = { events?: Record<string, () => void> } & P;
+export type Props<P extends Record<string, unknown> = any> = {
+  events?: Record<string, () => void>;
+} & P;
 
 export default abstract class Block<P extends Record<string, unknown> = any> {
   static EVENTS = {
@@ -29,11 +31,11 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   private _element: HTMLElement | null = null;
 
   /** JSDoc
-   * @param {string} tagName
-   * @param {Object} props
-   *
-   * @returns {void}
-   */
+	 * @param {string} tagName
+	 * @param {Object} props
+	 *
+	 * @returns {void}
+	 */
   protected constructor(propsWithChildren: Props<P> = {} as Props<P>) {
     const eventBus = new EventBus<BlockEvents<Props<P>>>();
     this.eventBus = () => eventBus;
@@ -151,9 +153,11 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
 
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
-        contextAndStubs[name] = component.map((child) => `<div data-id="${child.id}"></div>`);
+        contextAndStubs[name] = component.map(
+          (child) => `<div data-id='${child.id}'></div>`,
+        );
       } else {
-        contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+        contextAndStubs[name] = `<div data-id='${component.id}'></div>`;
       }
     });
 
@@ -190,7 +194,10 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     return this.element;
   }
 
-  private _getChildrenAndProps(childrenAndProps: Props<P>): { props: Props<P>, children: Record<string, Block> } {
+  private _getChildrenAndProps(childrenAndProps: Props<P>): {
+    props: Props<P>;
+    children: Record<string, Block>;
+  } {
     const props = {} as Record<string, unknown>;
     const children: Record<string, Block> = {};
 
