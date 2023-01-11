@@ -5,6 +5,7 @@ import * as styles from './Message.scss';
 interface MessageProps {
   content: string;
   isMine: boolean;
+  time: string;
 }
 
 export class Message extends Block {

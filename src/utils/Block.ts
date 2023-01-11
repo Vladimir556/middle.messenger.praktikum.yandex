@@ -20,15 +20,13 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
 
   public id = nanoid(6);
 
-  public children: Record<string, Block>;
+  public children: Record<string, Block | Block[]>;
 
   protected props: Props<P>;
 
   private eventBus: () => EventBus<BlockEvents<Props<P>>>;
 
   private _element: HTMLElement | null = null;
-
-  private _meta: { props: Props<P> };
 
   /** JSDoc
    * @param {string} tagName
@@ -41,10 +39,6 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     this.eventBus = () => eventBus;
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
-
-    this._meta = {
-      props,
-    };
 
     this.children = children;
     this.props = this._makePropsProxy(props);
@@ -101,7 +95,14 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach((child) => child.dispatchComponentDidMount());
+    Object.values(this.children).forEach(child => {
+      if (Array.isArray(child)) {
+        child.forEach(ch => ch.dispatchComponentDidMount());
+      } else {
+        child.dispatchComponentDidMount();
+      }
+    });
+
   }
 
   private _componentDidUpdate(oldProps: Props<P>, newProps: Props<P>) {
@@ -150,7 +151,11 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     const contextAndStubs = { ...context };
 
     Object.entries(this.children).forEach(([name, component]) => {
-      contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+      if (Array.isArray(component)) {
+        contextAndStubs[name] = component.map(child => `<div data-id="${child.id}"></div>`)
+      } else {
+        contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+      }
     });
 
     const html = template(contextAndStubs);
@@ -159,7 +164,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
 
     temp.innerHTML = html;
 
-    Object.entries(this.children).forEach(([_, component]) => {
+    const replaceStub = (component: Block) => {
       const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
 
       if (!stub) {
@@ -169,6 +174,14 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
       component.getContent()?.append(...Array.from(stub.childNodes));
 
       stub.replaceWith(component.getContent()!);
+    }
+
+    Object.entries(this.children).forEach(([_, component]) => {
+      if (Array.isArray(component)) {
+        component.forEach(replaceStub);
+      } else {
+        replaceStub(component);
+      }
     });
 
     return temp.content;
@@ -216,11 +229,6 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
         throw new Error('Нет доступа');
       },
     });
-  }
-
-  private _createDocumentElement(tagName: string) {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-    return document.createElement(tagName);
   }
 
   public show() {

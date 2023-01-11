@@ -77,7 +77,7 @@ export interface ChatTokenData {
 export interface SelectChatData {
   title: string,
   avatar: string,
-  chatId: number,
+  id: number,
 }
 
 export interface Message {
