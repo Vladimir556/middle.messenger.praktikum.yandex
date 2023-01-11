@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "parcel ./src/index.html --port 3000 --no-cache --open",
     "server": "node ./server/index.js",
-    "build": "parcel build ./src/index.html",
+    "build": "parcel build src/index.html",
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
     "stylelint": "stylelint \"src/**/*.scss\"",
