@@ -1,0 +1,22 @@
+@import "src/styles/variables";
+
+.context-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  .menu-text {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .menu-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

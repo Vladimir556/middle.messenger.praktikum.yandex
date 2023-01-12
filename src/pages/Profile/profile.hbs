@@ -1,10 +1,20 @@
 <main>
   {{{backButton}}}
   <div class="profile-container">
-    <div class="profile-container__avatar">
-      <img src="{{avatarSVG}}" alt="avatar">
-    </div>
+    {{{profileAvatar}}}
+
     <h3 class="profile-container__username">{{display_name}}</h3>
     {{{profileForm}}}
+
+    {{#if isChangeForm}}
+      {{{settingsCloseLink}}}
+    {{else}}
+    <div class="profile-container__buttons">
+      {{{changeInfoLink}}}
+      {{{changePasswordLink}}}
+      {{{logOutLink}}}
+    </div>
+    {{/if}}
+
   </div>
 </main>

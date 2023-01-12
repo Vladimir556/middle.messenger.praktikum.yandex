@@ -1,0 +1,54 @@
+@import "src/styles/variables";
+
+.profile-avatar {
+  margin: 60px auto 0;
+  display: flex;
+  position: relative;
+
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 130px;
+  background: $backGroundGrayColor;
+  border-radius: 50%;
+  overflow: hidden;
+
+  .avatar-image {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+  }
+
+  .avatar-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    width: 100%;
+    height: 100%;
+
+    background: $modalBackground;
+
+    cursor: pointer;
+    opacity: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &__text {
+      color: $whiteColor;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 14px;
+
+      margin: 33px;
+    }
+  }
+}

@@ -1,28 +1,38 @@
+// base
 import Block from '../../utils/Block';
 import template from './chatList.hbs';
-import * as styles from './chatList.scss';
 
-interface ChatListProp {
-  name: string
-  time: string,
-  lastMessage: string,
-  unreadCount?: string
+// styles
+import * as styles from './chatList.scss';
+import { UserInfo } from '../../types/interfaces';
+
+interface LastMessage {
+  user: UserInfo;
+  time: string;
+  content: string;
 }
 
-interface ChatListProps {
-  chats: ChatListProp[]
+export interface ChatListProp {
+  id?: number;
+  title?: string;
+  avatar?: string | null;
+  unread_count?: number;
+  last_message?: LastMessage | null;
+}
+
+export interface ChatListProps {
+  chats?: ChatListProp[];
+  events?: {
+    click: (event: Event) => void;
+  }
 }
 
 export class ChatList extends Block {
-  constructor(props: ChatListProps) {
+  constructor(props?: ChatListProps) {
     super(props);
   }
 
-  protected init() {
-    this.setProps({ styles });
-  }
-
   protected render(): DocumentFragment {
-    return this.compile(template, this.props);
+    return this.compile(template, { ...this.props, styles });
   }
 }

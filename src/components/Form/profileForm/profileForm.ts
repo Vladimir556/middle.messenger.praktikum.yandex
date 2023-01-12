@@ -1,7 +1,6 @@
 import Block from '../../../utils/Block';
 import template from './profileForm.hbs';
 import { LabeledInput } from '../../inputs/Input/LabeledInput/labeledInput';
-import { Link } from '../../buttons/Link/link';
 import { Button } from '../../buttons/Button/button';
 
 interface ProfileFormProps {
@@ -84,16 +83,14 @@ export class ProfileForm extends Block {
       name: 'oldPassword',
       id: 'oldPassword',
       labelText: 'Старый пароль',
-      value: this.props.phone,
     });
 
     this.children.passwordInput = new LabeledInput({
       type: 'password',
       disabled: !this.props.isChangeForm,
-      name: 'password',
-      id: 'password',
+      name: 'newPassword',
+      id: 'newPassword',
       labelText: 'Новый пароль',
-      value: this.props.phone,
     });
 
     this.children.passwordRepeatInput = new LabeledInput({
@@ -102,22 +99,6 @@ export class ProfileForm extends Block {
       name: 'repeatPassword',
       id: 'repeatPassword',
       labelText: 'Повторите новый пароль',
-      value: this.props.phone,
-    });
-
-    this.children.changeInfoLink = new Link({
-      text: 'Изменить данные',
-      href: '/Profile/changeInfo',
-    });
-
-    this.children.changePasswordLink = new Link({
-      text: 'Изменить пароль',
-      href: '/Profile/changePass',
-    });
-
-    this.children.logOutLink = new Link({
-      text: 'Выйти',
-      href: '/Auth/',
     });
 
     this.children.saveButton = new Button({

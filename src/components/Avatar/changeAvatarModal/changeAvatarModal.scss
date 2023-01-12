@@ -1,0 +1,56 @@
+@import "src/styles/variables";
+
+.modal {
+  background: $modalBackground;
+  width: 100vw;
+  height: 100vh;
+
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modal-content {
+    background: $whiteColor;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+
+    .modal-title {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      text-align: center;
+    }
+
+    .modal-text {
+      margin-top: 43px;
+      margin-bottom: 45px;
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+
+      input {
+        display: none;
+      }
+
+      &__content-text {
+        font-size: 14px;
+        color: $grayColor;
+      }
+
+      &__content-button {
+        font-size: 12px;
+        text-decoration: underline;
+        color: $blueColor;
+      }
+    }
+  }
+}

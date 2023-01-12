@@ -17,6 +17,11 @@ export const validationValue: Record<string, { regExp?: RegExp, message: string,
       'латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, нет спецсимволов (допустим только дефис).',
     errMessage: 'имя введено не правильно',
   },
+  display_name: {
+    regExp: /.*/,
+    message: 'Имя, которое будет отображаться в чате',
+    errMessage: '',
+  },
   second_name: {
     regExp: /(^[А-ЯЁ]{1}[а-яё-]+)|(^[A-Z]{1}[a-z-]+)/u,
     message:
@@ -30,6 +35,12 @@ export const validationValue: Record<string, { regExp?: RegExp, message: string,
     errMessage: 'номер телефона введен не правильно',
   },
   password: {
+    regExp: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,40}$/,
+    message:
+      'от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра.',
+    errMessage: 'пароль введен не правильно',
+  },
+  newPassword: {
     regExp: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,40}$/,
     message:
       'от 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра.',
