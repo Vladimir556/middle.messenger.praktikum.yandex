@@ -1,6 +1,6 @@
 import API, { ChatAPI } from '../api/ChatAPI';
 import store from '../utils/Store';
-import { ChatsData, SelectChatData } from '../types/interfaces';
+import { ChatsData, ChatsUsersData, DeleteChatData, SelectChatData } from '../types/interfaces';
 import MessagesController from './MessagesController';
 
 export class ChatController {
@@ -8,6 +8,31 @@ export class ChatController {
 
   constructor() {
     this.api = API;
+  }
+
+  async deleteChat(data: DeleteChatData) {
+    try {
+      await this.api.delete(data)
+      this.fetchChats()
+    } catch (e: any) {
+      console.error(e.message);
+    }
+  }
+
+  async deleteUserToChat(data: ChatsUsersData) {
+    try {
+      await this.api.deleteUsers(data)
+    } catch (e: any) {
+      console.error(e.message);
+    }
+  }
+
+  async addUserToChat(data: ChatsUsersData) {
+    try {
+      await this.api.addUsers(data)
+    } catch (e: any) {
+      console.error(e.message);
+    }
   }
 
   async fetchChats() {

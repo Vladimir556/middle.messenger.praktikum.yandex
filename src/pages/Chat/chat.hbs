@@ -10,23 +10,27 @@
       {{{chatList}}}
     </div>
     <div class="messenger__right-column">
-      <div class="chat">
-        <div class="chat__header">
-          <div class="chat-title">
-            {{#if current.avatar}}<img src="https://ya-praktikum.tech/api/v2/resources{{current.avatar}}" class="chat-title__avatar" height="35" width="35">{{/if}}
-            <h4 class="chat-title__name">{{current.title}}</h4>
+      {{#if current}}
+        <div class="chat">
+          <div class="chat__header">
+            <div class="chat-title">
+              {{#if current.avatar}}<img src="https://ya-praktikum.tech/api/v2/resources{{current.avatar}}" class="chat-title__avatar" height="35" width="35">{{/if}}
+              <h4 class="chat-title__name">{{current.title}}</h4>
+            </div>
+            {{{contextButtonMenu}}}
+            {{{contextMunuChatSettings}}}
           </div>
-          {{{contextButtonMenu}}}
-          {{{contextMunuChatSettings}}}
-        </div>
           {{{chatHistory}}}
-        <div class="chat__bottom-panel">
-<!--          {{{contextMunuMessage}}}-->
-          {{{clipButton}}}
-          {{{messageInput}}}
-          {{{sendMsgButton}}}
+          <div class="chat__bottom-panel">
+            <!--          {{{contextMunuMessage}}}-->
+            {{{clipButton}}}
+            {{{messageInput}}}
+            {{{sendMsgButton}}}
+          </div>
         </div>
-      </div>
+      {{else}}
+        <div class="empty-chat"><span>Выберите чат</span></div>
+      {{/if}}
     </div>
   </div>
 </main>

@@ -126,14 +126,44 @@ export class ChatPageBase extends Block {
         {
           img: addUserSVG,
           text: 'Добавить пользователя',
+          events: {
+            click: () => {
+              const userIdToAdd = prompt('Введите id пользователя')
+
+              ChatController.addUserToChat({
+                chatId: this.props.current.id,
+                users: [Number(userIdToAdd)]
+              })
+            }
+          }
         },
         {
           img: delUserSVG,
           text: 'Удалить пользователя',
+          events: {
+            click: () => {
+              const userIdToDelete = prompt('Введите id пользователя')
+
+              ChatController.addUserToChat({
+                chatId: this.props.current.id,
+                users: [Number(userIdToDelete)]
+              })
+            }
+          }
         },
         {
           img: delChatSVG,
           text: 'Удалить чат',
+          events: {
+            click: () => {
+              const confirmMsg = confirm('Вы действительно хотите удалить чат ?')
+              if (confirmMsg) {
+                ChatController.deleteChat({
+                  chatId: this.props.current.id
+                })
+              }
+            }
+          }
         },
       ],
     });
@@ -158,14 +188,29 @@ export class ChatPageBase extends Block {
         {
           img: photoVideoSVG,
           text: 'Фото или Видео',
+          events: {
+            click: () => {
+              console.log('Фото или Видео');
+            }
+          }
         },
         {
           img: fileSVG,
           text: 'Файл',
+          events: {
+            click: () => {
+              console.log('Файл');
+            }
+          }
         },
         {
           img: locationSVG,
           text: 'Локация',
+          events: {
+            click: () => {
+              console.log('Локация');
+            }
+          }
         },
       ],
     });

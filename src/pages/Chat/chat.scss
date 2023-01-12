@@ -52,6 +52,12 @@
     height: 100%;
     width: 100%;
 
+    .empty-chat {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
     .chat {
       height: 100%;
       display: flex;
