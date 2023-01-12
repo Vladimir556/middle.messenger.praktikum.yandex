@@ -1,7 +1,7 @@
 import Block from '../../utils/Block';
 import template from './ContextMenu.hbs';
 import * as styles from './ContextMenu.scss';
-import { ContextMunuItem, ContextMenuItemProps } from './ContextMunuItem/ContextMunuItem';
+import { ContextMenuItem, ContextMenuItemProps } from './ContextMunuItem/ContextMenuItem';
 
 interface ContextMenuProps {
   items: ContextMenuItemProps[];
@@ -31,9 +31,10 @@ export class ContextMenu extends Block {
   }
 
   private createMenuItems(props: ContextMenuProps) {
-    return props.items.map((item) => new ContextMunuItem({
+    return props.items.map((item) => new ContextMenuItem({
       img: item.img,
       text: item.text,
+      events: item.events
     }));
   }
 

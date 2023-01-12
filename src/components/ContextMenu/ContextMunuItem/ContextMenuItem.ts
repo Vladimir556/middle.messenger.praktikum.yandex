@@ -11,7 +11,7 @@ export interface ContextMenuItemProps {
   }
 }
 
-export class ContextMunuItem extends Block {
+export class ContextMenuItem extends Block {
   constructor(props: ContextMenuItemProps) {
     super({
       ...props,
