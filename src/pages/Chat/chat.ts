@@ -40,6 +40,7 @@ import router from '../../utils/Router';
 import { ContextButton } from '../../components/buttons/ContextButton/ContextButton';
 import { ContextMenu } from '../../components/ContextMenu/ContextMenu';
 import MessagesController from '../../controllers/MessagesController';
+import { ControlLink } from '../../components/buttons/Link/ControlLink/ControlLink';
 
 export class ChatPageBase extends Block {
   createChatHandler(event: Event) {
@@ -98,6 +99,20 @@ export class ChatPageBase extends Block {
   }
 
   protected init() {
+    this.children.createChat = new ControlLink({
+      text: 'Новый чат',
+      class: 'profile__link',
+      events:{
+        click: () => {
+          const title = prompt('Введите название чата')
+
+          ChatController.createChat({ title: title as string }).then(() => {
+            this.updateChatListHandler();
+          });
+        }
+      }
+    })
+
     this.children.profileLink = new Link({
       text: 'Профиль >',
       class: 'profile__link',

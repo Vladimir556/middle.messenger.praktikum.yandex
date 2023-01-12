@@ -4,6 +4,7 @@ import Block from '../../../../utils/Block';
 
 interface ControlLinkProps {
   text: string;
+  class?: string;
   events?: {
     click?: (event?: Event) => void;
   };
