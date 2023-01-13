@@ -111,9 +111,9 @@ export default class HTTPTransport {
 
       xhr.onload = () => resolve(xhr.response);
 
-      xhr.onabort = () => reject(new Error(HTTPTransport.Error.ERR_CONNECTION_ABORTED));
-      xhr.ontimeout = () => reject(new Error(HTTPTransport.Error.ERR_CONNECTION_TIMED_OUT));
-      xhr.onerror = () => reject(new Error(HTTPTransport.Error.ERR_CONNECTION_ERROR));
+      xhr.onabort = () => reject({reason: HTTPTransport.Error.ERR_CONNECTION_ABORTED});
+      xhr.ontimeout = () => reject({reason: HTTPTransport.Error.ERR_CONNECTION_TIMED_OUT});
+      xhr.onerror = () => reject({reason: HTTPTransport.Error.ERR_CONNECTION_ERROR});
     });
   };
 }
