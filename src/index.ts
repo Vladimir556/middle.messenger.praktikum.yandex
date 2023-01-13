@@ -4,8 +4,7 @@ import { RegistrationPage } from './pages/Registration/registration';
 import { ProfilePage } from './pages/Profile/profile';
 import { ChatPage } from './pages/Chat/chat';
 import { Routes } from './constants/routes';
-// import AuthController from "./controllers/AuthController";
-// import store from './utils/Store';
+import AuthController from './controllers/AuthController';
 
 window.addEventListener('DOMContentLoaded', async () => {
   Router
@@ -13,30 +12,27 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Register, RegistrationPage)
     .use(Routes.Profile, ProfilePage)
     .use(Routes.Messenger, ChatPage)
-    .start();
 
-  // let isProtectedRoute = true;
-  //
-  // switch (window.location.pathname) {
-  //   case Routes.Index:
-  //   case Routes.Register:
-  //     isProtectedRoute = false;
-  //     break;
-  // }
-  //
-  // try {
-  //   await AuthController.fetchUser();
-  //
-  //   Router.start();
-  //   console.log('try')
-  //   if (!isProtectedRoute) {
-  //     Router.go(Routes.Profile)
-  //   }
-  // } catch (e) {
-  //   Router.start();
-  //   console.log('catch')
-  //   if (isProtectedRoute) {
-  //     Router.go(Routes.Index);
-  //   }
-  // }
+  let isProtectedRoute = true;
+
+  switch (window.location.pathname) {
+    case Routes.Index:
+    case Routes.Register:
+      isProtectedRoute = false;
+      break;
+  }
+
+  try {
+    await AuthController.fetchUser();
+
+    Router.start();
+    if (!isProtectedRoute) {
+      Router.go(Routes.Profile)
+    }
+  } catch (e) {
+    Router.start();
+    if (isProtectedRoute) {
+      Router.go(Routes.Index);
+    }
+  }
 });
