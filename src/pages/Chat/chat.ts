@@ -61,11 +61,11 @@ export class ChatPageBase extends Block {
     ChatController.selectChat({
       title: title as string,
       avatar: avatar as string,
-      id: Number(id)
+      id: Number(id),
     }).then(() => {
       (this.children.chatHistory as Block).setProps({
         userId: this.props.user.id,
-        id: Number(id)
+        id: Number(id),
       });
       router.go(`${Routes.Messenger}#${id}`);
     });
@@ -82,15 +82,15 @@ export class ChatPageBase extends Block {
             result.push({
               id: user.id,
               title: user.login,
-              avatar: user.avatar
+              avatar: user.avatar,
             });
           });
 
           (this.children.chatList as Block).setProps({
             chats: [...result],
             events: {
-              click: (event: Event) => this.createChatHandler(event)
-            }
+              click: (event: Event) => this.createChatHandler(event),
+            },
           });
         }
       });
@@ -110,14 +110,14 @@ export class ChatPageBase extends Block {
           ChatController.createChat({ title: title as string }).then(() => {
             this.updateChatListHandler();
           });
-        }
-      }
+        },
+      },
     });
 
     this.children.profileLink = new Link({
       text: 'Профиль >',
       class: 'profile__link',
-      href: Routes.Profile
+      href: Routes.Profile,
     });
 
     // search input
@@ -127,14 +127,14 @@ export class ChatPageBase extends Block {
       id: 'search',
       placeholder: 'Поиск',
       events: {
-        input: (event) => this.searchUserHandler(event as InputEvent)
-      }
+        input: (event) => this.searchUserHandler(event as InputEvent),
+      },
     });
 
     this.children.chatList = new ChatList({
       events: {
-        click: (event) => this.openChatHandler(event)
-      }
+        click: (event) => this.openChatHandler(event),
+      },
     });
 
     this.children.contextMunuChatSettings = new ContextMenu({
@@ -149,11 +149,11 @@ export class ChatPageBase extends Block {
               if (userIdToAdd) {
                 ChatController.addUserToChat({
                   chatId: this.props.current.id,
-                  users: [Number(userIdToAdd)]
+                  users: [Number(userIdToAdd)],
                 });
               }
-            }
-          }
+            },
+          },
         },
         {
           img: delUserSVG,
@@ -165,11 +165,11 @@ export class ChatPageBase extends Block {
               if (userIdToDelete) {
                 ChatController.addUserToChat({
                   chatId: this.props.current.id,
-                  users: [Number(userIdToDelete)]
+                  users: [Number(userIdToDelete)],
                 });
               }
-            }
-          }
+            },
+          },
         },
         {
           img: delChatSVG,
@@ -179,14 +179,14 @@ export class ChatPageBase extends Block {
               const confirmMsg = confirm('Вы действительно хотите удалить чат ?');
               if (confirmMsg) {
                 ChatController.deleteChat({
-                  chatId: this.props.current.id
+                  chatId: this.props.current.id,
                 });
                 this.updateChatListHandler();
               }
-            }
-          }
-        }
-      ]
+            },
+          },
+        },
+      ],
     });
 
     this.children.contextButtonMenu = new ContextButton({
@@ -198,10 +198,10 @@ export class ChatPageBase extends Block {
           (this.children.contextMunuChatSettings as Block).setProps({
             positionX: (event?.currentTarget as HTMLElement).getClientRects()[0].x - 200,
             positionY: (event?.currentTarget as HTMLElement).getClientRects()[0].y + 25,
-            active: true
+            active: true,
           });
-        }
-      }
+        },
+      },
     });
 
     this.children.contextMunuMessage = new ContextMenu({
@@ -212,8 +212,8 @@ export class ChatPageBase extends Block {
           events: {
             click: () => {
               console.log('Фото или Видео');
-            }
-          }
+            },
+          },
         },
         {
           img: fileSVG,
@@ -221,8 +221,8 @@ export class ChatPageBase extends Block {
           events: {
             click: () => {
               console.log('Файл');
-            }
-          }
+            },
+          },
         },
         {
           img: locationSVG,
@@ -230,10 +230,10 @@ export class ChatPageBase extends Block {
           events: {
             click: () => {
               console.log('Локация');
-            }
-          }
-        }
-      ]
+            },
+          },
+        },
+      ],
     });
 
     this.children.clipButton = new ContextButton({
@@ -245,10 +245,10 @@ export class ChatPageBase extends Block {
           (this.children.contextMunuMessage as Block).setProps({
             positionX: (event?.currentTarget as HTMLElement).getClientRects()[0].x,
             positionY: (event?.currentTarget as HTMLElement).getClientRects()[0].y - 150,
-            active: true
+            active: true,
           });
-        }
-      }
+        },
+      },
     });
 
     this.children.sendMsgButton = new ContextButton({
@@ -260,8 +260,8 @@ export class ChatPageBase extends Block {
           const message: HTMLTextAreaElement = document.querySelector('#message') as HTMLTextAreaElement;
           MessagesController.sendMessage(this.props.current.id, message.value);
           message.value = '';
-        }
-      }
+        },
+      },
     });
 
     this.children.chatHistory = new ChatHistory({});
@@ -271,8 +271,8 @@ export class ChatPageBase extends Block {
       id: 'message',
       placeholder: 'Сообщение',
       events: {
-        input: (event) => autoSizeTextArea(event!)
-      }
+        input: (event) => autoSizeTextArea(event!),
+      },
     });
 
     this.updateChatListHandler();
@@ -286,13 +286,13 @@ export class ChatPageBase extends Block {
       (this.children.chatList as Block).setProps({
         chats: this.props.chats,
         events: {
-          click: (event: Event) => this.openChatHandler(event)
-        }
+          click: (event: Event) => this.openChatHandler(event),
+        },
       });
 
       // clear search input
       (this.children.input as Block).setProps({
-        value: ''
+        value: '',
       });
     });
   }
@@ -303,7 +303,7 @@ export class ChatPageBase extends Block {
       styles,
       arrowSVG,
       clipSVG,
-      contextMenuSVG
+      contextMenuSVG,
     });
   }
 }
