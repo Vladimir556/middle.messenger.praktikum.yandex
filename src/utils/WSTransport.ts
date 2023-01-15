@@ -76,7 +76,7 @@ export default class WSTransport extends EventBus {
 
         this.emit(WSTransportEvents.Message, data);
       } catch (e: any) {
-        console.error(e.message)
+        console.error(e.message);
       }
     });
   }

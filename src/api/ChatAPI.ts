@@ -33,8 +33,8 @@ export class ChatAPI extends BaseAPI {
   changeAvatar(data: FormData) {
     return this.http.put('/avatar', {
       data,
-      file: true
-    })
+      file: true,
+    });
   }
 
   update = undefined;

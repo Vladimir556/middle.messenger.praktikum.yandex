@@ -38,6 +38,6 @@ export class ChatListBase extends Block {
   }
 }
 
-const withChats = withStore((state) => ({...state.chats}))
+const withChats = withStore((state) => ({ ...state.chats }));
 
 export const ChatList = withChats(ChatListBase);

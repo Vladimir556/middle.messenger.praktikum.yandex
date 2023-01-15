@@ -31,7 +31,7 @@ export class Avatar extends Block {
   protected init() {
     this.children.changeAvatarModal = new changeAvatarModal({
       changeModalActive: false,
-      type: 'profile'
+      type: 'profile',
     });
   }
 

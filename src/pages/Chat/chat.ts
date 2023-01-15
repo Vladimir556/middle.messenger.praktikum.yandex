@@ -105,8 +105,8 @@ export class ChatPageBase extends Block {
   protected init() {
     this.children.changeAvatarModal = new changeAvatarModal({
       changeModalActive: false,
-      type: 'chat'
-    })
+      type: 'chat',
+    });
 
     this.children.createChat = new ControlLink({
       text: 'Новый чат',
@@ -200,11 +200,11 @@ export class ChatPageBase extends Block {
           events: {
             click: () => {
               (this.children.changeAvatarModal as Block).setProps({
-                changeModalActive: true
-              })
-            }
-          }
-        }
+                changeModalActive: true,
+              });
+            },
+          },
+        },
       ],
     });
 
@@ -288,14 +288,14 @@ export class ChatPageBase extends Block {
 
     this.children.chatHistory = new ChatHistory({});
 
-		this.children.messageInput = new MessageInput({
-			name: 'message',
-			id: 'message',
-			placeholder: 'Сообщение',
-			events: {
-				input: (event) => autoSizeTextArea(event!)
-			}
-		});
+    this.children.messageInput = new MessageInput({
+      name: 'message',
+      id: 'message',
+      placeholder: 'Сообщение',
+      events: {
+        input: (event) => autoSizeTextArea(event!),
+      },
+    });
 
     this.updateChatListHandler();
   }

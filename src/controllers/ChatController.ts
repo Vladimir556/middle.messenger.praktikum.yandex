@@ -19,9 +19,9 @@ export class ChatController {
     try {
       const result = await this.api.changeAvatar(data);
       store.set('chats.current.avatar', result.avatar);
-      this.fetchChats()
+      this.fetchChats();
     } catch (e: any) {
-      console.error(e.message)
+      console.error(e.message);
     }
   }
 
