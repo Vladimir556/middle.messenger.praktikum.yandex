@@ -110,10 +110,10 @@ export class ProfilePageBase extends Block {
       const data = getFormData(event);
 
       if (this.props.isChangePassForm) {
-        console.log('update password');
+        // console.log('update password');
         UserController.updateProfilePassword(data as UpdatePasswordData);
       } else {
-        console.log('update info');
+        // console.log('update info');
         UserController.updateProfile(data as UpdateProfileData);
       }
 

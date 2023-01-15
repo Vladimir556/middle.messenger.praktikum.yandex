@@ -41,13 +41,16 @@ import { ContextButton } from '../../components/buttons/ContextButton/ContextBut
 import { ContextMenu } from '../../components/ContextMenu/ContextMenu';
 import MessagesController from '../../controllers/MessagesController';
 import { ControlLink } from '../../components/buttons/Link/ControlLink/ControlLink';
+import { changeAvatarModal } from '../../components/Avatar/changeAvatarModal/changeAvatarModal';
 
 export class ChatPageBase extends Block {
   createChatHandler(event: Event) {
     const element = event.target as HTMLElement;
     const { title, id } = element.dataset;
-    console.log(title, id);
-    console.log(this.props);
+
+    // console.log(title, id);
+    // console.log(this.props);
+
     ChatController.createChat({ title: `чат ${title} / ${this.props.user.login}` }).then((chat) => {
       this.updateChatListHandler();
       ChatController.addUserToChat({ chatId: chat.id, users: [Number(id)] });
@@ -100,6 +103,11 @@ export class ChatPageBase extends Block {
   }
 
   protected init() {
+    this.children.changeAvatarModal = new changeAvatarModal({
+      changeModalActive: false,
+      type: 'chat'
+    })
+
     this.children.createChat = new ControlLink({
       text: 'Новый чат',
       class: 'profile__link',
@@ -133,7 +141,7 @@ export class ChatPageBase extends Block {
 
     this.children.chatList = new ChatList({
       events: {
-        click: (event) => this.openChatHandler(event),
+        click: (event: Event) => this.openChatHandler(event),
       },
     });
 
@@ -186,6 +194,17 @@ export class ChatPageBase extends Block {
             },
           },
         },
+        {
+          img: photoVideoSVG,
+          text: 'Изменить изображение чата',
+          events: {
+            click: () => {
+              (this.children.changeAvatarModal as Block).setProps({
+                changeModalActive: true
+              })
+            }
+          }
+        }
       ],
     });
 
@@ -256,24 +275,27 @@ export class ChatPageBase extends Block {
       class: 'button send-button',
 
       events: {
-        click: (event) => {
+        click: () => {
           const message: HTMLTextAreaElement = document.querySelector('#message') as HTMLTextAreaElement;
-          MessagesController.sendMessage(this.props.current.id, message.value);
-          message.value = '';
+
+          if (message.value) {
+            MessagesController.sendMessage(this.props.current.id, message.value);
+            message.value = '';
+          }
         },
       },
     });
 
     this.children.chatHistory = new ChatHistory({});
 
-    this.children.messageInput = new MessageInput({
-      name: 'message',
-      id: 'message',
-      placeholder: 'Сообщение',
-      events: {
-        input: (event) => autoSizeTextArea(event!),
-      },
-    });
+		this.children.messageInput = new MessageInput({
+			name: 'message',
+			id: 'message',
+			placeholder: 'Сообщение',
+			events: {
+				input: (event) => autoSizeTextArea(event!)
+			}
+		});
 
     this.updateChatListHandler();
   }

@@ -42,7 +42,6 @@ export class ChatHistoryBase extends Block {
     const userId = store.getState().user.id;
     return props.messages?.map((msg) => {
       if (msg.type === 'message') {
-        console.log(msg);
         const isMine = msg.user_id === userId;
         const timeStamp = new Date(msg.time);
         const time = timeStamp.toLocaleString();

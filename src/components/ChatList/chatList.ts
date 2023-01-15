@@ -5,6 +5,7 @@ import template from './chatList.hbs';
 // styles
 import * as styles from './chatList.scss';
 import { UserInfo } from '../../types/interfaces';
+import { withStore } from '../../utils/Store';
 
 interface LastMessage {
   user: UserInfo;
@@ -27,7 +28,7 @@ export interface ChatListProps {
   }
 }
 
-export class ChatList extends Block {
+export class ChatListBase extends Block {
   constructor(props?: ChatListProps) {
     super(props);
   }
@@ -36,3 +37,7 @@ export class ChatList extends Block {
     return this.compile(template, { ...this.props, styles });
   }
 }
+
+const withChats = withStore((state) => ({...state.chats}))
+
+export const ChatList = withChats(ChatListBase);

@@ -15,10 +15,20 @@ export class ChatController {
     this.api = API;
   }
 
+  async changeAvatar(data: FormData) {
+    try {
+      const result = await this.api.changeAvatar(data);
+      store.set('chats.current.avatar', result.avatar);
+      this.fetchChats()
+    } catch (e: any) {
+      console.error(e.message)
+    }
+  }
+
   async deleteChat(data: DeleteChatData) {
     try {
       await this.api.delete(data);
-      this.fetchChats();
+      await this.fetchChats();
       store.set('chats.current', null);
     } catch (e: any) {
       console.error(e.message);
@@ -58,6 +68,7 @@ export class ChatController {
       await this.selectChat({
         title: data.title,
         id: chat.id,
+        avatar: undefined,
       });
 
       return chat;

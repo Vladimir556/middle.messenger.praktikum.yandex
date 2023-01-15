@@ -31,6 +31,7 @@ export class Avatar extends Block {
   protected init() {
     this.children.changeAvatarModal = new changeAvatarModal({
       changeModalActive: false,
+      type: 'profile'
     });
   }
 
@@ -40,14 +41,6 @@ export class Avatar extends Block {
       || (event.target as Element).className === 'avatar-mask__text') {
       (this.children.changeAvatarModal as Block).setProps({
         changeModalActive: true,
-      });
-    }
-
-    // закрытие модального окна
-    if ((event.target as Element).className === 'modal') {
-      (this.children.changeAvatarModal as Block).setProps({
-        changeModalActive: false,
-        imageName: null,
       });
     }
   }
