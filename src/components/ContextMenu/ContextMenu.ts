@@ -34,7 +34,7 @@ export class ContextMenu extends Block {
     return props.items.map((item) => new ContextMenuItem({
       img: item.img,
       text: item.text,
-      events: item.events
+      events: item.events,
     }));
   }
 

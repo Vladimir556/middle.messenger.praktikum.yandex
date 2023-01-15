@@ -7,7 +7,11 @@ import * as styles from './changeAvatarModal.scss';
 import { Button } from '../../buttons/Button/button';
 
 // controllers
-import userController from '../../../controllers/UserController';
+import UserController from '../../../controllers/UserController';
+import store from '../../../utils/Store';
+import ChatController from '../../../controllers/ChatController';
+
+type ChangeAvatarType = 'chat' | 'profile';
 
 interface changeAvatarModalProps {
   imageName?: string;
@@ -15,7 +19,9 @@ interface changeAvatarModalProps {
   events?: {
     change?: () => void;
     submit?: (event: Event) => void;
+    click?: (event: Event) => void;
   };
+  type: ChangeAvatarType
 }
 
 export class changeAvatarModal extends Block {
@@ -25,8 +31,19 @@ export class changeAvatarModal extends Block {
       events: {
         change: () => this.onChange(),
         submit: (event: Event) => this.onSubmit(event),
+        click: (event: Event) => this.setChangeModalActive(event),
       },
     });
+  }
+
+  setChangeModalActive(event: Event) {
+    // закрытие модального окна
+    if ((event.target as Element).className === 'modal') {
+      this.setProps({
+        changeModalActive: false,
+        imageName: null,
+      });
+    }
   }
 
   onSubmit(event: Event) {
@@ -35,7 +52,25 @@ export class changeAvatarModal extends Block {
     if (this.props.uploadAvatar) {
       const data = new FormData();
       data.append('avatar', this.props.uploadAvatar);
-      userController.updateProfileAvatar(data);
+
+      switch (this.props.type) {
+        case 'profile':
+          UserController.updateProfileAvatar(data);
+          break;
+        case 'chat':
+          const chatId = store.getState().chats.current.id;
+
+          if (chatId) {
+            data.append('chatId', chatId);
+            ChatController.changeAvatar(data);
+          }
+          break;
+      }
+
+      this.setProps({
+        changeModalActive: false,
+        imageName: null,
+      });
     }
   }
 

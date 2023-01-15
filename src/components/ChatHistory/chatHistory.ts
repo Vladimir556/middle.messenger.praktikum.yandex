@@ -39,10 +39,9 @@ export class ChatHistoryBase extends Block {
   }
 
   private createMessages(props: ChatHistoryProps) {
-    const userId = store.getState().user.id
+    const userId = store.getState().user.id;
     return props.messages?.map((msg) => {
-      if (msg.type === "message") {
-        console.log(msg);
+      if (msg.type === 'message') {
         const isMine = msg.user_id === userId;
         const timeStamp = new Date(msg.time);
         const time = timeStamp.toLocaleString();
@@ -51,13 +50,12 @@ export class ChatHistoryBase extends Block {
           content: msg.content,
           time,
         });
-      } else {
-        return new Message(({
-          isMine: false,
-          content: `user ${msg.content} connected`,
-          time: `${new Date().toLocaleString()}`
-        }))
       }
+      return new Message(({
+        isMine: false,
+        content: `user ${msg.content} connected`,
+        time: `${new Date().toLocaleString()}`,
+      }));
     });
   }
 }

@@ -30,6 +30,13 @@ export class ChatAPI extends BaseAPI {
     return this.http.post(`/token/${chatId}`);
   }
 
+  changeAvatar(data: FormData) {
+    return this.http.put('/avatar', {
+      data,
+      file: true,
+    });
+  }
+
   update = undefined;
 }
 
