@@ -1,0 +1,21 @@
+<div
+  class="modal"
+  {{#unless changeModalActive}}
+    style="display: none"
+  {{/unless}}
+>
+  <form class="modal-content" id="modal-container">
+    <p class="modal-title">
+      Загрузите файл
+    </p>
+    <div class="modal-text">
+      <input type="file" name="avatar" id="avatar-upload" accept="image/*">
+      {{#if imageName}}
+        <span class="modal-text__content-text">{{imageName}}</span>
+      {{else}}
+        <label class="modal-text__content-button" for="avatar-upload">Выбрать файл на компьютере</label>
+      {{/if}}
+    </div>
+    {{{modalBtn}}}
+  </form>
+</div>

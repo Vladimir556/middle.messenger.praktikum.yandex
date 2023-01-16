@@ -14,11 +14,7 @@ export class Button extends Block {
     super(props);
   }
 
-  protected init() {
-    this.setProps({ styles });
-  }
-
   protected render(): DocumentFragment {
-    return this.compile(template, this.props);
+    return this.compile(template, { ...this.props, styles });
   }
 }

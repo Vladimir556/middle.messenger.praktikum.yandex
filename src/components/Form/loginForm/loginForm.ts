@@ -17,8 +17,6 @@ export class LoginForm extends Block {
   }
 
   protected init() {
-    this.setProps({ styles });
-
     this.children.loginInput = new LabeledInput({
       type: 'text',
       name: 'login',
@@ -40,11 +38,11 @@ export class LoginForm extends Block {
 
     this.children.registerLink = new Link({
       text: 'Нет аккаунта?',
-      href: '/Registration',
+      href: '/sign-up',
     });
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, this.props);
+    return this.compile(template, { ...this.props, styles });
   }
 }
