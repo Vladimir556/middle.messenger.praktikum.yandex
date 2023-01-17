@@ -29,11 +29,8 @@
     "nanoid": "4.0.0"
   },
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
-    "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
-    "@parcel/transformer-sass": "2.7.0",
     "@typescript-eslint/eslint-plugin": "5.43.0",
-    "@typescript-eslint/parser": "5.43.0",
+    "@typescript-eslint/parser": "^5.48.2",
     "chai": "4.3.7",
     "css-loader": "^6.7.3",
     "eslint": "8.27.0",
