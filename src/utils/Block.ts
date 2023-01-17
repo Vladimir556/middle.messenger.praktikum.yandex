@@ -116,7 +116,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  protected componentDidUpdate(oldProps: Props<P>, newProps: Props<P>) {
+  protected componentDidUpdate(_oldProps: Props<P>, _newProps: Props<P>) {
     return true;
   }
 
