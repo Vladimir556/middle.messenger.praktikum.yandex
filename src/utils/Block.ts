@@ -36,7 +36,7 @@ export default abstract class Block<P extends Record<string, unknown> = any> {
 	 *
 	 * @returns {void}
 	 */
-  protected constructor(propsWithChildren: Props<P> = {} as Props<P>) {
+  constructor(propsWithChildren: Props<P> = {} as Props<P>) {
     const eventBus = new EventBus<BlockEvents<Props<P>>>();
     this.eventBus = () => eventBus;
 
