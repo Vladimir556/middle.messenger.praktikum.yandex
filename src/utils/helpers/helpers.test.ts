@@ -19,7 +19,7 @@ describe('set function', () => {
   it('should return original object', () => {
     const result = set(obj, keypath, value);
 
-    obj['test2'] = 'another value';
+    obj.test2 = 'another value';
 
     expect(result).to.equal(obj);
   });
