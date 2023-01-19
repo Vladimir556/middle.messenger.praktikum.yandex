@@ -45,22 +45,6 @@ export class UserController {
       console.error(e);
     }
   }
-
-  // async user(data: { id: number}) {
-  //   try {
-  //
-  //   } catch (e: any) {
-  //     console.error(e);
-  //   }
-  // }
-  //
-  // async search(data: { login: string }) {
-  //   try {
-  //
-  //   } catch (e: any) {
-  //     console.error(e)
-  //   }
-  // }
 }
 
 export default new UserController();

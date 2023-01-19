@@ -72,4 +72,5 @@ const withSelectedChatMessages = withStore((state) => {
   };
 });
 
+// @ts-ignore
 export const ChatHistory = withSelectedChatMessages(ChatHistoryBase);

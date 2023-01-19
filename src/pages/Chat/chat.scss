@@ -1,4 +1,5 @@
 @import "src/styles/variables";
+@import "src/styles/styles";
 
 .messenger {
   display: flex;
@@ -16,7 +17,6 @@
     .profile {
       text-align: right;
       margin: 20px 10px;
-
       display: flex;
       justify-content: space-between;
 
@@ -61,6 +61,7 @@
       align-items: center;
       justify-content: center;
     }
+
     .chat {
       height: 100%;
       display: flex;

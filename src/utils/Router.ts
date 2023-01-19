@@ -1,6 +1,6 @@
 import Block from './Block';
 
-interface BlockConstructable<P extends Record<string, unknown> = any> {
+export interface BlockConstructable<P extends Record<string, unknown> = any> {
   new (props: P): Block<P>;
 }
 
