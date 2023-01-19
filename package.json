@@ -11,7 +11,9 @@
     "stylelint": "stylelint \"src/**/*.scss\"",
     "stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
     "start": "npm run build && npm run server",
-    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
+    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'",
+    "prepare": "husky install",
+    "precommit": "npm run test && npm run eslint:fix"
   },
   "repository": {
     "type": "git",
